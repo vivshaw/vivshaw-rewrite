@@ -1,47 +1,62 @@
-.intro-section {
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 90%);
+.rslash-section {
   padding-top: 8em;
   padding-bottom: 5em;
+  position: relative;
+  z-index: 2;
+}
 
-  .intro {
+.rslash-section:before {
+  background: inherit;
+  top: 0;
+  content: "";
+  display: block;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: skewY(2deg);
+  transform-origin: 100%;
+  z-index: -1;
+}
+
+.rslash-section:after {
+  background: inherit;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: skewY(-2deg);
+  transform-origin: 100%;
+  z-index: -1;
+}
+
+.lslash-section {
+  padding-top: 8em;
+  padding-bottom: 5em;
+  position: relative;
+  z-index: 1;
+
+  .section-content {
+    background-color: white;
+  }
+}
+
+section .section-content {
+  padding: 2em;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.intro-section {
+  .section-content {
     border: 10px solid white;
-    padding: 2em;
-    max-width: 1000px;
-    margin: auto;
     transform: skew(-5deg) rotate(2deg);
 
     h2 {
       transform: skew(5deg) rotate(-2deg) translateX(3%);
     }
-  }
-}
-
-.second-section {
-  padding-top: 8em;
-  padding-bottom: 5em;
-  position: relative;
-  top: -6em;
-  z-index: -1;
-
-  .intro {
-    background-color: white;
-    padding: 2em;
-    max-width: 1000px;
-    margin: auto;
-  }
-}
-
-.third-section {
-  padding-top: 8em;
-  padding-bottom: 5em;
-  position: relative;
-  top: -6em;
-  z-index: -1;
-
-  .intro {
-    padding: 2em;
-    max-width: 1000px;
-    margin: auto;
-    color: white;
   }
 }
