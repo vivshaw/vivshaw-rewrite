@@ -43,5 +43,6 @@ module.exports = {
     `gatsby-plugin-eslint`,
     `gatsby-plugin-webpack-size`,
     `gatsby-plugin-netlify`,
+    `gatsby-plugin-netlify-cms`,
   ],
 };
