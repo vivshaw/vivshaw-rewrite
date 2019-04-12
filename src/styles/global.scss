@@ -1,9 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Space+Mono");
 
+// Import our vars before Bulma, so they'll override
 @import "./vars.scss";
-@import "./bg.scss";
 
+// Bulma modules
 @import "./bulma-modules.scss";
+
+@import "./bg.scss";
 
 // Button reset
 button {
