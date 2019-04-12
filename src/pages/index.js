@@ -3,56 +3,66 @@ import { graphql } from "gatsby";
 import Layout from "../layout/layout";
 
 import "../styles/global.scss";
-import "./index.scss";
+import styles from "./index.module.scss";
 
 export default () => {
   return (
     <Layout>
-      <div className="slashed-container">
-        <section className="section intro-section rslash-section has-background-primary">
-          <div className="section-content">
-            <h2 className="is-size-1 has-text-weight-bold has-text-white">
-              Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer
-              working mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m
-              into the <em>React/Redux</em> ecosystem, functional programming,
-              and machine learning.
-            </h2>
-          </div>
-        </section>
+      <section
+        className={`section has-background-primary ${styles.introSection} ${
+          styles.rslashSection
+        } `}
+      >
+        <div className={styles.sectionContent}>
+          <h2 className="is-size-1 has-text-weight-bold has-text-white">
+            Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
+            mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m into the{" "}
+            <em>React/Redux</em> ecosystem, functional programming, and machine
+            learning.
+          </h2>
+        </div>
+      </section>
 
-        <section className="section lslash-section has-background-topoteal">
-          <div className="section-content">
-            <h2 className="is-size-1 has-text-weight-bold">
-              Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer
-              working mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m
-              into the <em>React/Redux</em> ecosystem, functional programming,
-              and machine learning.
-            </h2>
-          </div>
-        </section>
+      <section
+        className={`section has-background-topoteal ${styles.lslashSection} `}
+      >
+        <div className={styles.sectionContent}>
+          <h2 className="is-size-1 has-text-weight-bold">
+            Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
+            mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m into the{" "}
+            <em>React/Redux</em> ecosystem, functional programming, and machine
+            learning.
+          </h2>
+        </div>
+      </section>
 
-        <section className="section third-section rslash-section has-background-primary">
-          <div className="section-content">
-            <h2 className="is-size-1 has-text-weight-bold has-text-white">
-              Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer
-              working mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m
-              into the <em>React/Redux</em> ecosystem, functional programming,
-              and machine learning.
-            </h2>
-          </div>
-        </section>
+      <section
+        className={`section has-background-primary ${styles.rslashSection} `}
+      >
+        <div className={styles.sectionContent}>
+          <h2 className="is-size-1 has-text-weight-bold has-text-white">
+            Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
+            mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m into the{" "}
+            <em>React/Redux</em> ecosystem, functional programming, and machine
+            learning.
+          </h2>
+        </div>
+      </section>
 
-        <section className="section lslash-section has-background-squareyellow">
-          <div className="section-content">
-            <h2 className="is-size-1 has-text-weight-bold">
-              Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer
-              working mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m
-              into the <em>React/Redux</em> ecosystem, functional programming,
-              and machine learning.
-            </h2>
-          </div>
-        </section>
-      </div>
+      <section
+        className={`section has-background-squareyellow ${
+          styles.lslashSection
+        } `}
+      >
+        <div className={styles.sectionContent}>
+          <h2 className="is-size-1 has-text-weight-bold">
+            Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
+            mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m into the{" "}
+            <em>React/Redux</em> ecosystem, functional programming, and machine
+            learning.
+          </h2>
+        </div>
+      </section>
     </Layout>
   );
 };

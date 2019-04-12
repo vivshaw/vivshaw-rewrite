@@ -6,6 +6,8 @@ import WebBrand from "./WebBrand";
 
 import { HeaderContext } from "../../context/appContext";
 
+import styles from "./Header.module.scss";
+
 const Header = () => {
   const { state } = useContext(HeaderContext);
 
@@ -17,7 +19,7 @@ const Header = () => {
 
   return (
     <nav
-      className="navbar slant-nav is-fixed-top"
+      className={`${styles.slantNav} navbar is-fixed-top`}
       role="navigation"
       aria-label="main navigation"
     >
