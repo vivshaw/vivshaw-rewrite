@@ -1,0 +1,47 @@
+.intro-section {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 90%);
+  padding-top: 8em;
+  padding-bottom: 5em;
+
+  .intro {
+    border: 10px solid white;
+    padding: 2em;
+    max-width: 1000px;
+    margin: auto;
+    transform: skew(-5deg) rotate(2deg);
+
+    h2 {
+      transform: skew(5deg) rotate(-2deg) translateX(3%);
+    }
+  }
+}
+
+.second-section {
+  padding-top: 8em;
+  padding-bottom: 5em;
+  position: relative;
+  top: -6em;
+  z-index: -1;
+
+  .intro {
+    background-color: white;
+    padding: 2em;
+    max-width: 1000px;
+    margin: auto;
+  }
+}
+
+.third-section {
+  padding-top: 8em;
+  padding-bottom: 5em;
+  position: relative;
+  top: -6em;
+  z-index: -1;
+
+  .intro {
+    padding: 2em;
+    max-width: 1000px;
+    margin: auto;
+    color: white;
+  }
+}
