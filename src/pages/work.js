@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link, graphql } from "gatsby";
 
 export default ({ data }) => {
   return (
-    <div>
+    <Fragment>
       <h1>Vivshaw Blog</h1>
       <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
       {data.allMarkdownRemark.edges.map(({ node }) => (
@@ -17,7 +17,7 @@ export default ({ data }) => {
           </Link>
         </div>
       ))}
-    </div>
+    </Fragment>
   );
 };
 

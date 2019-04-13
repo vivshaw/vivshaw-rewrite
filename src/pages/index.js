@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Link, graphql } from "gatsby";
 
@@ -77,7 +77,7 @@ const BlogTitleLink = styled(Link)`
 
 export default ({ data }) => {
   return (
-    <div>
+    <Fragment>
       <RslashSection className="section has-background-primary">
         <LeadSectionContent>
           <h2 className="is-size-1 has-text-weight-bold has-text-white">
@@ -150,7 +150,7 @@ export default ({ data }) => {
           </h3>
         </SectionContent>
       </LslashSection>
-    </div>
+    </Fragment>
   );
 };
 
