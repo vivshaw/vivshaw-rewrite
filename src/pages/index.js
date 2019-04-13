@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 
 import "../styles/global.scss";
 
@@ -61,7 +61,21 @@ const LslashSection = styled.section`
   z-index: 1;
 `;
 
-export default () => {
+const BlogBlurb = styled.div`
+  margin-bottom: 1em;
+  margin-top: 1em;
+`;
+
+//FIXME: Better color for links, plus move link style into global overrides
+const BlogTitleLink = styled(Link)`
+  text-decoration: underline;
+  color: inherit;
+  &:hover {
+    background-color: lightpink;
+  }
+`;
+
+export default ({ data }) => {
   return (
     <div>
       <RslashSection className="section has-background-primary">
@@ -77,34 +91,63 @@ export default () => {
 
       <LslashSection className="section has-background-topoteal">
         <SectionContent className="has-background-white">
-          <h2 className="is-size-1 has-text-weight-bold">
-            Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
-            mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m into the{" "}
-            <em>React/Redux</em> ecosystem, functional programming, and machine
-            learning.
-          </h2>
+          <h3 className="is-size-3">
+            I have a <em>blog</em> . Here{`'`}s what I{`'`}ve written about
+            lately:
+          </h3>
+
+          {data.blog.edges.map(({ node }) => (
+            <BlogBlurb key={node.id}>
+              <h4 className="is-size-4">
+                <BlogTitleLink to={node.fields.slug}>
+                  {node.frontmatter.title}
+                </BlogTitleLink>{" "}
+                <span className="has-text-grey-light">
+                  — {node.frontmatter.modified}
+                </span>
+              </h4>
+              <p>{node.excerpt}</p>
+            </BlogBlurb>
+          ))}
         </SectionContent>
       </LslashSection>
 
-      <RslashSection className="section has-background-primary">
+      <RslashSection className="section has-background-primary has-text-white">
         <SectionContent>
-          <h2 className="is-size-1 has-text-weight-bold has-text-white">
-            Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
-            mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m into the{" "}
-            <em>React/Redux</em> ecosystem, functional programming, and machine
-            learning.
-          </h2>
+          <h3 className="is-size-3">
+            Here are a few things I{`'`}ve worked on lately:
+          </h3>
+
+          {data.work.edges.map(({ node }) => (
+            <BlogBlurb key={node.id}>
+              <h4 className="is-size-4">
+                <BlogTitleLink to={node.fields.slug}>
+                  {node.frontmatter.title}
+                </BlogTitleLink>{" "}
+                <span className="has-text-grey-light">
+                  — {node.frontmatter.modified}
+                </span>
+              </h4>
+              <p>{node.excerpt}</p>
+            </BlogBlurb>
+          ))}
         </SectionContent>
       </RslashSection>
 
       <LslashSection className="section has-background-squareyellow">
         <SectionContent className="has-background-white">
-          <h2 className="is-size-1 has-text-weight-bold">
-            Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
-            mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m into the{" "}
-            <em>React/Redux</em> ecosystem, functional programming, and machine
-            learning.
-          </h2>
+          <h3 className="is-size-4">
+            I{`’`}m a developer from Burlington, Vermont. I{`’`}m an alumna of
+            the University of Vermont, with a B.A. in Economics and Philosophy.
+            My central interests are in developing modern, data-driven web
+            applications, the React/Redux ecosystem, and machine learning.
+            Javascript is my home at the moment, although I{`’`}m pretty handy
+            with Java and Python as well. When I{`’`}m not coding, you’ll
+            generally find me shooting my Nikon, cycling, watching Cronenberg
+            films, or noodling around with my synthesizers. You can find me on
+            Twitter at <a href="https://twitter.com/irreduce">@irreduce</a> and
+            on GitHub at <a href="https://github.com/vivshaw">vivshaw</a>.
+          </h3>
         </SectionContent>
       </LslashSection>
     </div>
@@ -113,8 +156,31 @@ export default () => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/blog/" } }) {
-      totalCount
+    blog: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+      sort: { fields: [frontmatter___modified], order: DESC }
+      limit: 3
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            modified(formatString: "DD MMMM, YYYY")
+          }
+          excerpt
+          fields {
+            slug
+          }
+        }
+      }
+    }
+
+    work: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/work/" } }
+      sort: { fields: [frontmatter___modified], order: DESC }
+      limit: 3
+    ) {
       edges {
         node {
           id
