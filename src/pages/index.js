@@ -2,8 +2,6 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Link, graphql } from "gatsby";
 
-import "../styles/global.scss";
-
 const SectionContent = styled.div`
   padding: 2em;
   max-width: 1000px;
