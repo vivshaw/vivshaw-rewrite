@@ -44,5 +44,18 @@ module.exports = {
     `gatsby-plugin-webpack-size`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-netlify-cms`,
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
+      },
+    },
+    `gatsby-plugin-layout`,
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: true, // Print removed selectors and processed file names
+      },
+    },
   ],
 };

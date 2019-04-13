@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import styled from "styled-components";
 
 import NavLink from "./NavLink";
 import NavBurger from "./NavBurger";
@@ -6,7 +7,10 @@ import WebBrand from "./WebBrand";
 
 import { HeaderContext } from "../../context/appContext";
 
-import styles from "./Header.module.scss";
+const NavBar = styled.nav`
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 0% 100%);
+  padding-bottom: 1em;
+`;
 
 const Header = () => {
   const { state } = useContext(HeaderContext);
@@ -18,8 +22,8 @@ const Header = () => {
   }, [state.menuOpen]);
 
   return (
-    <nav
-      className={`${styles.slantNav} navbar is-fixed-top`}
+    <NavBar
+      className="navbar is-fixed-top"
       role="navigation"
       aria-label="main navigation"
     >
@@ -44,7 +48,7 @@ const Header = () => {
           <NavLink to="/">ABOUT</NavLink>
         </div>
       </div>
-    </nav>
+    </NavBar>
   );
 };
 

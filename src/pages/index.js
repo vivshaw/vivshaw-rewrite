@@ -1,69 +1,113 @@
 import React from "react";
+import styled from "styled-components";
 import { graphql } from "gatsby";
-import Layout from "../layout/layout";
 
 import "../styles/global.scss";
-import styles from "./index.module.scss";
+
+const SectionContent = styled.div`
+  padding: 2em;
+  max-width: 1000px;
+  margin: auto;
+`;
+
+const LeadSectionContent = styled(SectionContent)`
+  border: 10px solid white;
+  transform: skew(-5deg) rotate(2deg);
+
+  h2 {
+    transform: skew(5deg) rotate(-2deg) translateX(3%);
+  }
+`;
+
+const RslashSection = styled.section`
+  padding-top: 8em;
+  padding-bottom: 5em;
+  position: relative;
+  z-index: 2;
+
+  &:before {
+    background: inherit;
+    top: 0;
+    content: "";
+    display: block;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: skewY(2deg);
+    transform-origin: 100%;
+    z-index: -1;
+  }
+
+  &:after {
+    background: inherit;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: skewY(-2deg);
+    transform-origin: 100%;
+    z-index: -1;
+  }
+`;
+
+const LslashSection = styled.section`
+  padding-top: 8em;
+  padding-bottom: 5em;
+  position: relative;
+  z-index: 1;
+`;
 
 export default () => {
   return (
-    <Layout>
-      <section
-        className={`section has-background-primary ${styles.introSection} ${
-          styles.rslashSection
-        } `}
-      >
-        <div className={styles.sectionContent}>
+    <div>
+      <RslashSection className="section has-background-primary">
+        <LeadSectionContent>
           <h2 className="is-size-1 has-text-weight-bold has-text-white">
             Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
             mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m into the{" "}
             <em>React/Redux</em> ecosystem, functional programming, and machine
             learning.
           </h2>
-        </div>
-      </section>
+        </LeadSectionContent>
+      </RslashSection>
 
-      <section
-        className={`section has-background-topoteal ${styles.lslashSection} `}
-      >
-        <div className={styles.sectionContent}>
+      <LslashSection className="section has-background-topoteal">
+        <SectionContent className="has-background-white">
           <h2 className="is-size-1 has-text-weight-bold">
             Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
             mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m into the{" "}
             <em>React/Redux</em> ecosystem, functional programming, and machine
             learning.
           </h2>
-        </div>
-      </section>
+        </SectionContent>
+      </LslashSection>
 
-      <section
-        className={`section has-background-primary ${styles.rslashSection} `}
-      >
-        <div className={styles.sectionContent}>
+      <RslashSection className="section has-background-primary">
+        <SectionContent>
           <h2 className="is-size-1 has-text-weight-bold has-text-white">
             Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
             mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m into the{" "}
             <em>React/Redux</em> ecosystem, functional programming, and machine
             learning.
           </h2>
-        </div>
-      </section>
+        </SectionContent>
+      </RslashSection>
 
-      <section
-        className={`section has-background-squareyellow ${
-          styles.lslashSection
-        } `}
-      >
-        <div className={styles.sectionContent}>
+      <LslashSection className="section has-background-squareyellow">
+        <SectionContent className="has-background-white">
           <h2 className="is-size-1 has-text-weight-bold">
             Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
             mainly in <em>Javascript</em> & <em>Java</em>. I{`'`}m into the{" "}
             <em>React/Redux</em> ecosystem, functional programming, and machine
             learning.
           </h2>
-        </div>
-      </section>
-    </Layout>
+        </SectionContent>
+      </LslashSection>
+    </div>
   );
 };
 
