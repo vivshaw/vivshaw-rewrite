@@ -39,18 +39,13 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-layout`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-eslint`,
     `gatsby-plugin-webpack-size`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-netlify-cms`,
-    {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {
-        // Add any options here
-      },
-    },
-    `gatsby-plugin-layout`,
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {
