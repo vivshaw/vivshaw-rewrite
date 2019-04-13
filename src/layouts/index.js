@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 
 import Header from "../components/header/Header";
+import Footer from "../components/Footer";
 
 import { HeaderContextProvider } from "../context/appContext";
 
@@ -18,20 +19,16 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <div>
+      <Fragment>
         <HeaderContextProvider>
           <Header siteTitle={data.site.siteMetadata.title} />
         </HeaderContextProvider>
 
         <div>
           <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+          <Footer />
         </div>
-      </div>
+      </Fragment>
     )}
   />
 );
