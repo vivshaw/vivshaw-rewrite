@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { HeaderContext, actions } from "../../context/appContext";
+import { AppContext, actions } from "../../context/appContext";
 
 const NavBurger = () => {
-  const { state, dispatch } = useContext(HeaderContext);
+  const { state, dispatch } = useContext(AppContext);
 
   let menuOpen = state.menuOpen;
 

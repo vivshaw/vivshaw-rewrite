@@ -2,7 +2,7 @@ import React from "react";
 
 export const actions = { TOGGLE_MENU: "TOGGLE_MENU" };
 
-const HeaderContext = React.createContext();
+const AppContext = React.createContext();
 
 const initialState = {
   menuOpen: false,
@@ -15,16 +15,16 @@ const reducer = (state, action) => {
   }
 };
 
-const HeaderContextProvider = props => {
+const AppContextProvider = props => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
-    <HeaderContext.Provider value={{ state, dispatch }}>
+    <AppContext.Provider value={{ state, dispatch }}>
       {props.children}
-    </HeaderContext.Provider>
+    </AppContext.Provider>
   );
 };
 
-const HeaderContextConsumer = HeaderContext.Consumer;
+const AppContextConsumer = AppContext.Consumer;
 
-export { HeaderContext, HeaderContextProvider, HeaderContextConsumer };
+export { AppContext, AppContextProvider, AppContextConsumer };

@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from "gatsby";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer";
 
-import { HeaderContextProvider } from "../context/appContext";
+import { AppContextProvider } from "../context/appContext";
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -20,14 +20,12 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <Fragment>
-        <HeaderContextProvider>
+        <AppContextProvider>
           <Header siteTitle={data.site.siteMetadata.title} />
-        </HeaderContextProvider>
 
-        <div>
           <main>{children}</main>
           <Footer />
-        </div>
+        </AppContextProvider>
       </Fragment>
     )}
   />
