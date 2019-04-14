@@ -1,13 +1,22 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { graphql } from "gatsby";
+import styled from "styled-components";
+
+const PostWrap = styled.div`
+  padding-top: 8em;
+`;
 
 export default ({ data }) => {
-  const post = data.markdownRemark;
+  const {
+    html,
+    frontmatter: { title },
+  } = data.markdownRemark;
+
   return (
-    <Fragment>
-      <h1>{post.frontmatter.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
-    </Fragment>
+    <PostWrap>
+      <h1>{title}</h1>
+      <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
+    </PostWrap>
   );
 };
 
