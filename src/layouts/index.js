@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 
+import SEO from "../components/seo";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer";
 
@@ -19,14 +20,13 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <Fragment>
-        <AppContextProvider>
-          <Header siteTitle={data.site.siteMetadata.title} />
+      <AppContextProvider>
+        <SEO title="Blog" />
+        <Header siteTitle={data.site.siteMetadata.title} />
 
-          <main>{children}</main>
-          <Footer />
-        </AppContextProvider>
-      </Fragment>
+        <main>{children}</main>
+        <Footer />
+      </AppContextProvider>
     )}
   />
 );
