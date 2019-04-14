@@ -25,6 +25,4 @@ const AppContextProvider = props => {
   );
 };
 
-const AppContextConsumer = AppContext.Consumer;
-
-export { AppContext, AppContextProvider, AppContextConsumer };
+export { AppContext, AppContextProvider };
