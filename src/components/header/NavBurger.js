@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { AppContext, actions } from "../../context/appContext";
+
+import { AppContext } from "../../context";
+import { TOGGLE_MENU } from "../../context/actions";
 
 const NavBurger = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -10,7 +12,7 @@ const NavBurger = () => {
     menuOpen = state.menuOpen;
   }, [state.menuOpen]);
 
-  const toggleMenu = () => dispatch({ type: actions.TOGGLE_MENU });
+  const toggleMenu = () => dispatch({ type: TOGGLE_MENU });
 
   return (
     <button

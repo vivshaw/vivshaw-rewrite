@@ -5,7 +5,7 @@ import NavLink from "./NavLink";
 import NavBurger from "./NavBurger";
 import WebBrand from "./WebBrand";
 
-import { AppContext } from "../../context/appContext";
+import { AppContext } from "../../context/";
 
 const NavBar = styled.nav`
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 0% 100%);

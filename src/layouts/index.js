@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from "gatsby";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer";
 
-import { AppContextProvider } from "../context/appContext";
+import { AppContextProvider } from "../context";
 
 const Layout = ({ children }) => (
   <StaticQuery
