@@ -12,6 +12,14 @@ const PostTitle = styled.h1`
   margin-bottom: 1em;
 `;
 
+const Content = styled.div`
+  p:first-of-type {
+    font-size: 1.25em;
+
+    //FIXME: Add highlight after intro para;
+  }
+`;
+
 export default ({ data }) => {
   const {
     html,
@@ -25,7 +33,7 @@ export default ({ data }) => {
 
       {toc && <TOC contentHtml={tableOfContents} />}
 
-      <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
+      <Content className="content" dangerouslySetInnerHTML={{ __html: html }} />
     </PostWrap>
   );
 };
