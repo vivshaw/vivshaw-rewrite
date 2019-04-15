@@ -38,9 +38,3 @@ em {
     z-index: -1;
   }
 }
-
-// Fix code block wrapping in posts
-.content pre {
-  white-space: pre-wrap;
-  word-break: keep-all;
-}
