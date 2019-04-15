@@ -5,7 +5,7 @@ import styled from "styled-components";
 import TOC from "../components/TOC";
 
 const PostWrap = styled.div`
-  padding-top: 8em;
+  padding-top: 1em;
 `;
 
 const PostTitle = styled.h1`
