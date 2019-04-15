@@ -7,7 +7,8 @@ modified: 2017-07-02T20:45:21-04:00
 tags: [linux, windows, bash]
 comments: true
 image:
-    teaser: wsl-tmux-teaser.png
+  teaser: wsl-tmux-teaser.png
+toc: false
 ---
 
 {{ page.excerpt }}

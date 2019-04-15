@@ -6,12 +6,13 @@ modified: 2017-01-25T18:48:00-05:00
 tags: [python]
 comments: true
 image:
-    teaser: tweeter-robo-teaser.png
+  teaser: tweeter-robo-teaser.png
+toc: true
 ---
 
 Perhaps you've run across Twitter bots like [@thesefutures](http://motherboard.vice.com/read/twitter-bot-predicts-these-futures) or [@thinkpiecebot](https://twitter.com/thinkpiecebot) and wondered how to do that yourself. It's surprisingly simple and you should give it a try! For the less-technically-inclined, one can even create a bot with minimal code using [a tool that will handle the heavy lifting for you](http://cheapbotsdonequick.com/). But if, Reader dearest, you desire something more than that— you've come to the right place. Today we're going to get our hands dirty with Python and the Twitter API, and code our own Twitter bot from scratch. Later, we'll even go over deploying the bot to Heroku and letting it loose to act autonomously in the cloud. If this piques your curiosity, then I'd love to show you how simple it can really be, with a pinch of Python magic.
 
-{% include toc.html %}
+<!--include toc.html -->
 
 ## Introductory matters
 
@@ -88,7 +89,7 @@ Now that our bot can post to Twitter, we need to teach it to speak. We're going 
 
 #### Getting a corpus
 
-Before generating Markov chains, we'll need a corpus. This doesn't need to be anything special; a flat text file is all you'll need. The larger the corpus, the better that your results will be— something novel-length would be ideal. If you're having trouble finding a corpus, you could grab some public domain literature from [Project Gutenberg](https://www.gutenberg.org/), or use my favorite corpus, the entire text of [Charlotte Brontë's *Jane Eyre*](https://raw.githubusercontent.com/vivshaw/tweeter-robo/master/corpus.txt). Whatever corpus you choose, just download it and save it as `corpus.txt` in your project directory.
+Before generating Markov chains, we'll need a corpus. This doesn't need to be anything special; a flat text file is all you'll need. The larger the corpus, the better that your results will be— something novel-length would be ideal. If you're having trouble finding a corpus, you could grab some public domain literature from [Project Gutenberg](https://www.gutenberg.org/), or use my favorite corpus, the entire text of [Charlotte Brontë's _Jane Eyre_](https://raw.githubusercontent.com/vivshaw/tweeter-robo/master/corpus.txt). Whatever corpus you choose, just download it and save it as `corpus.txt` in your project directory.
 
 #### It's Markov time!
 
@@ -128,12 +129,12 @@ Feel free to [play around with the parameters](https://github.com/jsvine/markovi
 
 Let's pause a moment and figure out what we want our bot to do before we start writing it. If we want our bot to run autonomously, we'll need it to do at least these things:
 
-* Authenticate with Twitter
-* Load a text corpus
-* Make a Markov model from that corpus
-* Make sentences from the model
-* Tweet those sentences
-* Automate itself to tweet every X seconds
+- Authenticate with Twitter
+- Load a text corpus
+- Make a Markov model from that corpus
+- Make sentences from the model
+- Tweet those sentences
+- Automate itself to tweet every X seconds
 
 Let's try to break this down into some variables and methods. Clearly, we'll need to give our bot a `corpus` to load and a `delay` in seconds between tweets. We'll need to store a markov `model` in order to generate tweets. We've also seen from noodling with Tweepy that we'll need an `api` object. Of these, the `api` and the `model` are the only ones we'll need to use repeatedly, so they'll be class fields; the other two need merely be method arguments. As for methods: we'll only need to authenticate, load our corpus, and make our model once, so it makes sense to put these in the constructor. However, if we pull out the corpus and modeling into a helper method, we'll also be able to change our corpus after the bot is initilized. Making sentences and tweeting them can go in the same method, since we'll always be doing both together. Lastly, automating can be its own thing. If we mock up those class methods, it'll look like this:
 
@@ -147,11 +148,11 @@ class TweetBot:
     def load_corpus(self, corpus):
         #open our corpus & run it through Markovify
         pass
-        
+
     def tweet(self):
         #generate Markov tweet & send it
         pass
-        
+
     def automate(self, delay):
         #automatically tweet every delay seconds
         pass
@@ -161,7 +162,7 @@ Now that we know what our bot class will look like, let's start filling in the c
 
 ## Putting it all together
 
-#### __init__
+#### **init**
 
 If we want to initialize our Markov model in the constructor, we'll need to pass it the path to our `corpus`. We can then call the `load_corpus` method we'll later write. As for the authentication, it'll work just the same as in our earlier Tweepy exploration, except that we'll need to store it in a field.
 
@@ -240,14 +241,14 @@ class TweetBot:
         with open(corpus) as corpus_file:
             corpus_lines = corpus_file.read()
         self.model = markovify.Text(corpus_lines)
-        
+
     def tweet(self):
         message = self.model.make_short_sentence(140)
         try:
             self.api.update_status(message)
         except tweepy.TweepError as error:
             print(error.reason)
-        
+
     def automate(self, delay):
         while True:
             self.tweet()

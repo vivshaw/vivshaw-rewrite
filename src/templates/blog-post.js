@@ -2,19 +2,29 @@ import React from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 
+import TOC from "../components/TOC";
+
 const PostWrap = styled.div`
   padding-top: 8em;
+`;
+
+const PostTitle = styled.h1`
+  margin-bottom: 1em;
 `;
 
 export default ({ data }) => {
   const {
     html,
-    frontmatter: { title },
+    frontmatter: { title, toc },
+    tableOfContents,
   } = data.markdownRemark;
 
   return (
     <PostWrap>
-      <h1>{title}</h1>
+      <PostTitle className="is-size-3">{title}</PostTitle>
+
+      {toc && <TOC contentHtml={tableOfContents} />}
+
       <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
     </PostWrap>
   );
@@ -26,8 +36,9 @@ export const query = graphql`
       html
       frontmatter {
         title
+        toc
       }
-      tableOfContents
+      tableOfContents(maxDepth: 2)
     }
   }
 `;

@@ -6,7 +6,8 @@ modified: 2017-02-03T21:07:38-05:00
 tags: [scala, ml]
 comments: true
 image:
-    teaser: scriptophile-teaser.png
+  teaser: scriptophile-teaser.png
+toc: true
 ---
 
 ### Or, a Python Dev Hacks Together a Neural Network From Scratch in (Bad) Scala
@@ -15,7 +16,7 @@ Sometimes, on a lazy Saturday afternoon in the doldrums of one's spirit, one mus
 
 All my code here is based on Nielsen's algorithms, so if you want to learn this stuff, [go read his book](http://neuralnetworksanddeeplearning.com/). Did I mention it's free?
 
-{% include toc.html %}
+<!--include toc.html -->
 
 ## Grab and clean our data
 
@@ -118,7 +119,7 @@ Now that we have our fields, let's define a feedforward pass. This is simpler th
 def feedForward (activation: DenseMatrix[Double]) : DenseMatrix[Double] = {
     var output = activation
 
-    biases zip weights foreach { case (bias, weight) => 
+    biases zip weights foreach { case (bias, weight) =>
         output = sigmoid((weight * output) + bias)
     }
 
@@ -142,7 +143,7 @@ def sgd (trainingData: Seq[Datum], epochs: Int, miniBatchSize: Int, eta: Double,
         val data = shuffle(trainingData)
         val miniBatches = for (j <- 0 to n - 1 by miniBatchSize) yield trainingData.slice(j, j + miniBatchSize)
 
-        miniBatches foreach { miniBatch => 
+        miniBatches foreach { miniBatch =>
             updateMiniBatch(miniBatch, eta)
         }
 
@@ -176,7 +177,7 @@ def updateMiniBatch (miniBatch: Seq[Datum], eta: Double) {
 }
 ```
 
-Now we hit the complicated stuff: [backpropagation](https://en.wikipedia.org/wiki/Backpropagation). Basically, we need to cycle through two phases: First, calculate the error by doing a feedforward pass with our example and comparing it to our desired output. Second, we go backwards through the network, breaking down the error for each neuron in each layer, and use this to find our gradients. Nielsen provides [a whole chapter of crystal-clear explanation](http://neuralnetworksanddeeplearning.com/chap2.html) of how and why this works, so I'll point you his way for detailed exposition rather than poorly rehashing it here. 
+Now we hit the complicated stuff: [backpropagation](https://en.wikipedia.org/wiki/Backpropagation). Basically, we need to cycle through two phases: First, calculate the error by doing a feedforward pass with our example and comparing it to our desired output. Second, we go backwards through the network, breaking down the error for each neuron in each layer, and use this to find our gradients. Nielsen provides [a whole chapter of crystal-clear explanation](http://neuralnetworksanddeeplearning.com/chap2.html) of how and why this works, so I'll point you his way for detailed exposition rather than poorly rehashing it here.
 
 ```scala
 /* Returns the gradient of the cost function as a Tuple2[] of DenseMatrix[Double]s, where nabla_bias
@@ -185,13 +186,13 @@ Now we hit the complicated stuff: [backpropagation](https://en.wikipedia.org/wik
 def backprop (features: DenseMatrix[Double], result: DenseMatrix[Double]) : (Seq[DenseMatrix[Double]], Seq[DenseMatrix[Double]]) = {
     var nabla_bias = for (bias <- biases) yield DenseMatrix.zeros[Double](bias.rows, bias.cols)
     var nabla_weight = for (weight <- weights) yield DenseMatrix.zeros[Double](weight.rows, weight.cols)
-    
+
     // feedforward pass, storing z values
     var activation = features
     var activations = List(features)
     var zs: List[DenseMatrix[Double]] = List()
 
-    biases zip weights foreach { case (bias, weight) => 
+    biases zip weights foreach { case (bias, weight) =>
         val z = (weight * activation) + bias
         activation = sigmoid(z)
         zs = zs :+ z

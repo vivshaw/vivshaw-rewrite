@@ -6,14 +6,15 @@ modified: 2017-02-10T00:00:22-05:00
 tags: [python, ml]
 comments: true
 image:
-    teaser: robot-shakespeare-teaser.png
+  teaser: robot-shakespeare-teaser.png
+toc: true
 ---
 
 Can an artificial brain pen an artificial quatrain? Can neural networks master metonymy? Having a taste for both verse and machine learning, I set out to put together a fun little project to apply the things I've been learning about neural networks: a [Shakespearean sonnet generator](http://robot-shakespeare.herokuapp.com/) powered by a [long short term memory](https://en.wikipedia.org/wiki/Long_short-term_memory) (LSTM) neural network. For those who are not familiar with LSTM networks, they're basically a particular type of neural network that is uniquely suited to working with time series data. Regular old neural networks operate on one batch at a time, with no memory of previous batches, and are therefore pretty bad at learning connections between past data and present data. LSTMs are instead designed to [retain memory of the information they process for a long time](http://colah.github.io/posts/2015-08-Understanding-LSTMs/), and to make intelligent decisions about what information to forget and what to keep. This makes them much better than standard neural networks at learning connections over time.
 
 LSTM networks are a useful technique to have under your belt, as they've been used to achieve [state-of-the-art results in many different fields](http://karpathy.github.io/2015/05/21/rnn-effectiveness/). But don't let the data-sci-speak scare you off: with modern machine learning libraries like [Keras](keras.io) and [TensorFlow](https://www.tensorflow.org/), anyone with basic understanding of Python and linear algebra can get up and running with some basic neural networks in a day or two. If you're not convinced, read on: hopefully this little toy text-generation project will show you that neural networks are for everybody, and you don't need to be a comp sci Ph.D. to start finding useful applications for cutting-edge machine learning in your own data analysis, programming, or new media art.
 
-{% include toc.html %}
+<!--include toc.html -->
 
 ## Introductory matters: imports and corpus
 
@@ -26,7 +27,7 @@ from keras.layers import LSTM, Dense, Activation
 from keras.callbacks import ModelCheckpoint
 ```
 
-Alright, now let's choose & load our text corpus.  You'll want a corpus of sizable length— a novel would be good. I chose Shakespeare's sonnets, out of interest in seeing how a simple neural net would handle poetic text. If you don't have a corpus in mind already, I suggest checking out [Project Gutenberg](https://www.gutenberg.org/). In addition to loading the text, we'll need a way to transform its string data into a numerical form that the neural network can understand.  We'll start this process by assigning an integer encoding to the characters contained within the corpus. We'll get rid of all duplicate characters by casting the corpus to a set, then give it a canonical ordering by casting it to a list and sorting it, then build the dictionary of integer encodings with `enumerate` and a comprehension. Given my highly-structured source material, I felt it would be far more interesting to leave all the punctuation and line breaks intact, to see whether the network can learn some of the high-level features of the sonnet form. We'll also build a decoding dictionary to ease converting our networks output back into text.
+Alright, now let's choose & load our text corpus. You'll want a corpus of sizable length— a novel would be good. I chose Shakespeare's sonnets, out of interest in seeing how a simple neural net would handle poetic text. If you don't have a corpus in mind already, I suggest checking out [Project Gutenberg](https://www.gutenberg.org/). In addition to loading the text, we'll need a way to transform its string data into a numerical form that the neural network can understand. We'll start this process by assigning an integer encoding to the characters contained within the corpus. We'll get rid of all duplicate characters by casting the corpus to a set, then give it a canonical ordering by casting it to a list and sorting it, then build the dictionary of integer encodings with `enumerate` and a comprehension. Given my highly-structured source material, I felt it would be far more interesting to leave all the punctuation and line breaks intact, to see whether the network can learn some of the high-level features of the sonnet form. We'll also build a decoding dictionary to ease converting our networks output back into text.
 
 It's probably a good idea to print some output after completion of each step, so we can check whether our numbers look reasonable.
 
@@ -52,7 +53,7 @@ Our corpus contains 64 unique characters.
 
 ## Encoding & vectorizing our data
 
-OK, now that we have dictionaries with which to encode our text, we'll need to chop it up into examples our neural network can work with,  and corresponding labels to test against. We're going to build our network to accept a sequence of characters as input (let's call it a 'sentence' for simplicity's sake),  and to predict  the character that occurs after that sentence.  We'll need all our sentences to be of an equal length, and preferably long enough to give the neural network plenty of data to work with. I tried it with sentences 50 characters in length.  Once we decide on our length, slices and a for-loop make it easy  to chop up our corpus into the appropriate chunks & encode the characters into integers.
+OK, now that we have dictionaries with which to encode our text, we'll need to chop it up into examples our neural network can work with, and corresponding labels to test against. We're going to build our network to accept a sequence of characters as input (let's call it a 'sentence' for simplicity's sake), and to predict the character that occurs after that sentence. We'll need all our sentences to be of an equal length, and preferably long enough to give the neural network plenty of data to work with. I tried it with sentences 50 characters in length. Once we decide on our length, slices and a for-loop make it easy to chop up our corpus into the appropriate chunks & encode the characters into integers.
 
 ```python
 # it slices, it dices, it makes julienned datasets!
@@ -78,7 +79,7 @@ You should see something like this:
 Sliced our corpus into 94604 sentences of length 50
 ```
 
-Suddenly, it's linear algebra time! We've encoded our corpus as lists of integers, but Keras speaks the language of matrices. We'll also want to convert our integer identifiers to [one-hot encoded](https://en.wikipedia.org/wiki/One-hot) vectors of dimension `num_chars`. This makes sense because the integers we are using are just arbitrary nominal identifiers, not ordinal quantities (for example, there's no sense in which 'N' is greater than ',', or in which 'o' is closer to 't' than '7'). We could use fancy tools like sklearn's `OneHotEncoder` or Keras' `np_utils.to_categorical`, but for this easy case, I found it instructive to just use a nested for-loop.  Think about it like this:  our data structure contains `n` sentences, each containing `m` characters,  each of which should become a `t`-dimensional one-hot encoded vector. That is, a `num_sentences x sentence_length x num_chars` array.  Let's initialize a zero array with those dimensions. Now, if we iterate over the sentences in our data structure, and within that loop, iterate over the characters in each sentence, then the index of our outer loop  corresponds to our position on the 0-dimension, the index of the inner loop corresponds to our position on the 1-dimension, and the integer that encodes the character corresponds to our position on the 2-dimension. We assign that element to 1, and we have our one-hot encoding!
+Suddenly, it's linear algebra time! We've encoded our corpus as lists of integers, but Keras speaks the language of matrices. We'll also want to convert our integer identifiers to [one-hot encoded](https://en.wikipedia.org/wiki/One-hot) vectors of dimension `num_chars`. This makes sense because the integers we are using are just arbitrary nominal identifiers, not ordinal quantities (for example, there's no sense in which 'N' is greater than ',', or in which 'o' is closer to 't' than '7'). We could use fancy tools like sklearn's `OneHotEncoder` or Keras' `np_utils.to_categorical`, but for this easy case, I found it instructive to just use a nested for-loop. Think about it like this: our data structure contains `n` sentences, each containing `m` characters, each of which should become a `t`-dimensional one-hot encoded vector. That is, a `num_sentences x sentence_length x num_chars` array. Let's initialize a zero array with those dimensions. Now, if we iterate over the sentences in our data structure, and within that loop, iterate over the characters in each sentence, then the index of our outer loop corresponds to our position on the 0-dimension, the index of the inner loop corresponds to our position on the 1-dimension, and the integer that encodes the character corresponds to our position on the 2-dimension. We assign that element to 1, and we have our one-hot encoding!
 
 For our labels, we have one label for each sentence, each of which should become a `t`-dimensional one-hot encoded vector. This will be a `num_sentences x num_chars` array. So, we'll initialize another array. Since we are already looping over each sentence in the outer loop of the previous step, we can just use that same loop. Its index will correspond with the 0-dimension, and the integer character encoding will correspond with the 1-dimension.
 
@@ -108,7 +109,7 @@ Sanity check X. Dimension: (94604, 50, 64) Sentence length: 50
 
 ## Building our network
 
-It's finally time to build our neural network!  You might expect this to be complex, and normally it would be. But with Keras, it's remarkably simple. We can simply initialize a model, add layers to it until we are satisfied with its architecture, and then compile it. We will initialize a Sequential model, then add a decent-sized LSTM layer for our inputs (256 worked quite well for me). We'll need to specify the dimensions of an input example. Since each sentence is an input, our dimensions will be `sentence_length x num_chars`. We will choose a Dense layer for our output. Each label is a single character,  so our dimension here will just be `num_chars`. Because our network is basically solving a classification problem with `num_chars` classes, we'll choose softmax activation for our output layer, and a cross-entropy loss function. Now we just need an optimizer! I chose to take the Adam optimizer for a spin.
+It's finally time to build our neural network! You might expect this to be complex, and normally it would be. But with Keras, it's remarkably simple. We can simply initialize a model, add layers to it until we are satisfied with its architecture, and then compile it. We will initialize a Sequential model, then add a decent-sized LSTM layer for our inputs (256 worked quite well for me). We'll need to specify the dimensions of an input example. Since each sentence is an input, our dimensions will be `sentence_length x num_chars`. We will choose a Dense layer for our output. Each label is a single character, so our dimension here will just be `num_chars`. Because our network is basically solving a classification problem with `num_chars` classes, we'll choose softmax activation for our output layer, and a cross-entropy loss function. Now we just need an optimizer! I chose to take the Adam optimizer for a spin.
 
 ```python
 # Define our model
@@ -122,7 +123,7 @@ model.compile(loss='categorical_crossentropy', optimizer='adam')
 
 ## Saving our model
 
-We're almost ready to train our model!  But first, we'll need a way to save our model and results. To save our model's architecture, we can use the handy `to_yaml()` method, like so:
+We're almost ready to train our model! But first, we'll need a way to save our model and results. To save our model's architecture, we can use the handy `to_yaml()` method, like so:
 
 ```python
 # Dump our model architecture to a file so we can load it elsewhere
@@ -131,7 +132,7 @@ with open('model.yaml', 'a') as model_file:
     model_file.write(architecture)
 ```
 
-Saving our weights is pretty easy as well.  We'll do this with a `ModelCheckpoint` that will be passed into our model's training function as a callback and executed after each epoch.  We'll set it to monitor our loss function,  and save only the epochs that improve our loss.
+Saving our weights is pretty easy as well. We'll do this with a `ModelCheckpoint` that will be passed into our model's training function as a callback and executed after each epoch. We'll set it to monitor our loss function, and save only the epochs that improve our loss.
 
 ```python
 # Set up checkpoints
@@ -142,7 +143,7 @@ callbacks = [dump_weights]
 
 ## It's Go Time!
 
-Now we'll train our model.  We just need to specify the number of epochs and the batch size, and to remember to pass in our callbacks:
+Now we'll train our model. We just need to specify the number of epochs and the batch size, and to remember to pass in our callbacks:
 
 ```python
 # Action time! [Insert guitar solo here]
@@ -160,7 +161,7 @@ If all went well, you should find yourself staring at something like this (and s
 Epoch 00000: loss improved from inf to 2.64364, saving model to weights-00-2.644.hdf5
 ```
 
- Be patient, especially if you're not running these computations with [CUDA](https://en.wikipedia.org/wiki/CUDA). I don't have an appropriate GPU, so it took my poor old ThinkPad 6-8 hours each time I wanted to train my model. So, make some tea and ponder the mysteries of the human experience, I guess. Once you've achieved a Zen-like tranquility and your model has finished training, I recommend saving the file with the best weights under an easily-accessible name, like `weights.hdf5`.
+Be patient, especially if you're not running these computations with [CUDA](https://en.wikipedia.org/wiki/CUDA). I don't have an appropriate GPU, so it took my poor old ThinkPad 6-8 hours each time I wanted to train my model. So, make some tea and ponder the mysteries of the human experience, I guess. Once you've achieved a Zen-like tranquility and your model has finished training, I recommend saving the file with the best weights under an easily-accessible name, like `weights.hdf5`.
 
 ## Generating text
 
@@ -197,7 +198,7 @@ model.load_weights("weights.hdf5")
 model.compile(loss='categorical_crossentropy', optimizer='adam')
 ```
 
-Our high-level strategy is this: we'll feed a seed phrase into the model, predict the next character and store it, and make a new seed by appending the predicted character to the seed  and chopping off the first character. We will then feed the new seed back into the model, and repeat this process until we've generated a decently long chunk of text.  So let's start with the seed.  We'll pick a random sentence from the corpus,  and then one-hot encode it, just like before:
+Our high-level strategy is this: we'll feed a seed phrase into the model, predict the next character and store it, and make a new seed by appending the predicted character to the seed and chopping off the first character. We will then feed the new seed back into the model, and repeat this process until we've generated a decently long chunk of text. So let's start with the seed. We'll pick a random sentence from the corpus, and then one-hot encode it, just like before:
 
 ```python
 seed = randint(0, corpus_length - sentence_length)
@@ -208,7 +209,7 @@ for i, character in enumerate(seed_phrase):
     X[0, i, encoding[character]] = 1
 ```
 
-Now we just need to feed it into the model and iterate as described above.  To get our predicted character,  we'll feed the seed into `model.predict()` and then take the `argmax`. We can then just pop that into the decoding dictionary to get our predicted character.  Then, we simply construct an array with the appropriate number of dimensions, use it to one-hot encode a character, and append it to our seed, dropping the first character. We can do this with a slice and a an `np.concatenate` along the 1-dimension.
+Now we just need to feed it into the model and iterate as described above. To get our predicted character, we'll feed the seed into `model.predict()` and then take the `argmax`. We can then just pop that into the decoding dictionary to get our predicted character. Then, we simply construct an array with the appropriate number of dimensions, use it to one-hot encode a character, and append it to our seed, dropping the first character. We can do this with a slice and a an `np.concatenate` along the 1-dimension.
 
 ```python
 generated_text = ""
