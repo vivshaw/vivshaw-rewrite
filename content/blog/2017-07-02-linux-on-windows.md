@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "Linux on Windows!?"
-excerpt: "Windows 10 finally finds its killer app: Linux"
+blurb: "Windows 10 finally finds its killer app: Linux"
 categories: blog
 modified: 2017-07-02T20:45:21-04:00
 tags: [linux, windows, bash]
@@ -10,8 +10,6 @@ image:
   teaser: wsl-tmux-teaser.png
 toc: false
 ---
-
-{{ page.excerpt }}
 
 If you, like me, are one of those devs who prefer a Linux environment but are stuck on Windows because of reasons (in my case, accessibility software), if you're tired of struggling with Cygwin and MinGW, if you're put off by the hassle of running everything in VMs: do yourself a favor & try [Windows Subsystem for Linux](https://msdn.microsoft.com/en-us/commandline/wsl/about). It may sound like just another Cygwin-alike, but trust me, it is way better.
 

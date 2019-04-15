@@ -120,7 +120,7 @@ export default ({ data }) => {
                   — {node.frontmatter.modified}
                 </span>
               </h4>
-              <p>{node.excerpt}</p>
+              <p>{node.frontmatter.blurb || node.excerpt}</p>
             </BlogBlurb>
           ))}
         </SectionContent>
@@ -181,6 +181,7 @@ export const query = graphql`
           frontmatter {
             title
             modified(formatString: "DD MMMM, YYYY")
+            blurb
           }
           excerpt
           fields {

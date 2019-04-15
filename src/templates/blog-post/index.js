@@ -1,15 +1,12 @@
 import React from "react";
-import { graphql } from "gatsby";
 import styled from "styled-components";
+import { graphql } from "gatsby";
 
-import TOC from "../components/TOC";
+import TOC from "./TOC";
+import FrontMatter from "./FrontMatter";
 
 const PostWrap = styled.div`
   padding-top: 1em;
-`;
-
-const PostTitle = styled.h1`
-  margin-bottom: 1em;
 `;
 
 const Content = styled.div`
@@ -23,13 +20,13 @@ const Content = styled.div`
 export default ({ data }) => {
   const {
     html,
-    frontmatter: { title, toc },
+    frontmatter: { title, toc, blurb },
     tableOfContents,
   } = data.markdownRemark;
 
   return (
     <PostWrap>
-      <PostTitle className="is-size-3">{title}</PostTitle>
+      <FrontMatter title={title} blurb={blurb} />
 
       {toc && <TOC contentHtml={tableOfContents} />}
 
@@ -45,6 +42,7 @@ export const query = graphql`
       frontmatter {
         title
         toc
+        blurb
       }
       tableOfContents(maxDepth: 2)
     }
