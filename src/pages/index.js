@@ -59,6 +59,22 @@ const LslashSection = styled.section`
   z-index: 1;
 `;
 
+const LeadSection = styled(RslashSection)`
+  &:before {
+    background: inherit;
+    top: -2em;
+    content: "";
+    display: block;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: none;
+    transform-origin: 100%;
+    z-index: -1;
+  }
+`;
+
 const BlogBlurb = styled.div`
   margin-bottom: 1em;
   margin-top: 1em;
@@ -76,7 +92,7 @@ const BlogTitleLink = styled(Link)`
 export default ({ data }) => {
   return (
     <Fragment>
-      <RslashSection className="section has-background-primary">
+      <LeadSection className="section has-background-primary">
         <LeadSectionContent>
           <h2 className="is-size-1 has-text-weight-bold has-text-white">
             Hi! I{`'`}m <em>Hannah Vivian Shaw</em>. I{`'`}m a developer working
@@ -85,7 +101,7 @@ export default ({ data }) => {
             learning.
           </h2>
         </LeadSectionContent>
-      </RslashSection>
+      </LeadSection>
 
       <LslashSection className="section has-background-topoteal">
         <SectionContent className="has-background-white">

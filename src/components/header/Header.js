@@ -22,11 +22,7 @@ const Header = () => {
   }, [state.menuOpen]);
 
   return (
-    <NavBar
-      className="navbar is-fixed-top"
-      role="navigation"
-      aria-label="main navigation"
-    >
+    <NavBar className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <WebBrand />
         <NavBurger />
