@@ -1,10 +1,12 @@
 ---
-title: "Build a Frankenstein Robot Brain, Teach It to Read Numbers"
-date: 2017-02-03T21:07:38-05:00
-tags: [scala, ml]
+date: 2017-02-04T02:07:38.000Z
+title: 'Build a Frankenstein Robot Brain, Teach It to Read Numbers'
+tags:
+  - scala
+  - ml
 comments: true
-image: scriptophile-teaser.png
 toc: true
+image: /assets/scriptophile-teaser.png
 ---
 
 ### Or, a Python Dev Hacks Together a Neural Network From Scratch in (Bad) Scala
