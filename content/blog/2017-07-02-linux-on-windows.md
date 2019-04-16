@@ -10,9 +10,6 @@ comments: true
 toc: false
 image: /assets/wsl-tmux-teaser.png
 ---
-
-![WSL](/assets/wsl-tmux-teaser.png)
-
 If you, like me, are one of those devs who prefer a Linux environment but are stuck on Windows because of reasons (in my case, accessibility software), if you're tired of struggling with Cygwin and MinGW, if you're put off by the hassle of running everything in VMs: do yourself a favor & try [Windows Subsystem for Linux](https://msdn.microsoft.com/en-us/commandline/wsl/about). It may sound like just another Cygwin-alike, but trust me, it is way better.
 
 ## So What's the Dealio?
@@ -20,7 +17,9 @@ If you, like me, are one of those devs who prefer a Linux environment but are st
 WSL is a compatibility layer that implements Linux system calls on top of the Windows kernel, allowing you to run Linux binaries as though they were native. On top of this frankenkernel, you get a full Ubuntu image, giving you a good old Bash prompt, all the GNU utils you know & love, and access to build toolchains for whatever you need. apt-get usually Just Works™ too. I got a decent dev environment up with the GNU toolchain, oh-my-zsh, vim, & tmux almost immediately.
 
 There are limits, of course: there remain unimplemented system calls which will totally break some programs (for example, until recently all Haskell programs were broken due to unimplemented `timer_create`), and anything graphical is not officially supported. Using Linux cli apps in a Windows CMD or Powershell can also make things look pretty wonky. This was supposed to be [Solarized](http://ethanschoonover.com/solarized):
-![WSL in Powershell, displaying completely incorrect colors][wsl-color]
+
+
+![WSL in Powershell, showing completely incorrect colors](/assets/wsl-color-probs.png)
 
 Personally, I got fed up with Powershell after spending days trying to get my dotfiles working. But why stop at what's officially supported?
 
@@ -36,11 +35,8 @@ Ultimately I managed to get vim, tmux, zsh, urxvt, feh, and Powerline working th
 
 Here's my current setup:
 
-![tmux, vim, zsh, and Poewrline operating inside urxvt on WSL][wsl-tmux]
+![tmux, vim, zsh, and Poewrline operating inside urxvt on WSL](/assets/wsl-tmux.png)
 
 ## But is it useful?
 
 My assessment: heck yeah! I've been using this as my primary C/C++ dev environment for about two weeks now and it is lightyears beyond trying to hack everything together on Windows utilities & MinGW. It'll never be as smooth as a real Linux install, but it's more than good enough to do real work in. For as long as I'm stuck on Windows, I plan to keep exploring and expanding this.
-
-[wsl-tmux]: {{ site.url }}/images/wsl-tmux.png
-[wsl-color]: {{ site.url }}/images/wsl-color-probs.png
