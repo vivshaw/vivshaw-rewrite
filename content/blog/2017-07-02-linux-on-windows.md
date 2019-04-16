@@ -1,14 +1,14 @@
 ---
-layout: article
-title: "Linux on Windows!?"
-excerpt: "Windows 10 finally finds its killer app: Linux"
-categories: blog
-modified: 2017-07-02T20:45:21-04:00
-tags: [linux, windows, bash]
+date: 2017-07-03T00:45:37.000Z
+title: Linux on Windows!?
+blurb: 'Windows 10 finally finds its killer app: Linux'
+tags:
+  - linux
+  - windows
+  - bash
 comments: true
-image:
-  teaser: wsl-tmux-teaser.png
 toc: false
+teaserImage: /assets/wsl-tmux-teaser.png
 ---
 
 {{ page.excerpt }}
