@@ -4,10 +4,7 @@ import { graphql } from "gatsby";
 
 import TOC from "./TOC";
 import FrontMatter from "./FrontMatter";
-
-const PostWrap = styled.div`
-  padding-top: 1em;
-`;
+import PageWrap from "../../components/PageWrap";
 
 const Content = styled.div`
   p:first-of-type {
@@ -25,13 +22,13 @@ export default ({ data }) => {
   } = data.markdownRemark;
 
   return (
-    <PostWrap>
+    <PageWrap>
       <FrontMatter title={title} blurb={blurb} />
 
       {toc && <TOC contentHtml={tableOfContents} />}
 
       <Content className="content" dangerouslySetInnerHTML={{ __html: html }} />
-    </PostWrap>
+    </PageWrap>
   );
 };
 
