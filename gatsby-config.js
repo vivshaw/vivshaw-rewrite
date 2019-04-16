@@ -11,6 +11,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/static/assets`,
+        name: "assets",
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `content`,
         path: `${__dirname}/content/`,
       },
@@ -41,6 +48,18 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-relative-images`,
+            options: {
+              name: "assets",
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {

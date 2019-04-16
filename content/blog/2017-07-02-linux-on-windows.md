@@ -8,8 +8,10 @@ tags:
   - bash
 comments: true
 toc: false
-teaserImage: /assets/wsl-tmux-teaser.png
+image: /static/assets/wsl-tmux-teaser.png
 ---
+
+![WSL](/assets/wsl-tmux-teaser.png)
 
 If you, like me, are one of those devs who prefer a Linux environment but are stuck on Windows because of reasons (in my case, accessibility software), if you're tired of struggling with Cygwin and MinGW, if you're put off by the hassle of running everything in VMs: do yourself a favor & try [Windows Subsystem for Linux](https://msdn.microsoft.com/en-us/commandline/wsl/about). It may sound like just another Cygwin-alike, but trust me, it is way better.
 

@@ -3,7 +3,7 @@ backend:
   repo: vivshaw/vivshaw
 
 public_folder: assets
-media_folder: content/images
+media_folder: static/assets
 
 collections:
   - name: blog
@@ -17,7 +17,7 @@ collections:
       - { name: tags, label: Tags, widget: list }
       - { name: comments, label: Comments?, widget: boolean }
       - { name: toc, label: TOC?, widget: boolean }
-      - { name: teaserImage, label: Teaser, widget: image }
+      - { name: image, label: Teaser, widget: image }
       - { name: body, label: Body, widget: markdown }
 
   - name: work

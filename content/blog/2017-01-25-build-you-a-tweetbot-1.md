@@ -1,12 +1,9 @@
 ---
-layout: article
 title: "Build You a Python TweetBot, Part 1: Tweepy & Markovify"
-categories: blog
 date: 2017-01-25T18:48:00-05:00
 tags: [python]
 comments: true
-image:
-  teaser: tweeter-robo-teaser.png
+image: tweeter-robo-teaser.png
 toc: true
 ---
 

@@ -1,12 +1,9 @@
 ---
-layout: article
 title: "Beautify Your Java Collections with Google Guava"
-categories: blog
 date: 2017-02-02T01:01:24-05:00
 tags: [java]
 comments: true
-image:
-  teaser: guava.jpg
+image: guava.jpg
 toc: true
 ---
 

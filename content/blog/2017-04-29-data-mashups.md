@@ -1,12 +1,9 @@
 ---
-layout: article
 title: "Minipost: Data Mashups: Remix Your Way To Interactive Visualizations"
-categories: blog
 date: 2017-05-05T11:55:13-04:00
 tags: [python, javascript, data, geo, visualization, leaflet]
 comments: true
-image:
-  teaser: data-mashups-teaser.png
+image: data-mashups-teaser.png
 toc: false
 ---
 
