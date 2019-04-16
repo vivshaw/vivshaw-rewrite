@@ -2,7 +2,7 @@
 layout: article
 title: "Build a Frankenstein Robot Brain, Teach It to Read Numbers"
 categories: blog
-modified: 2017-02-03T21:07:38-05:00
+date: 2017-02-03T21:07:38-05:00
 tags: [scala, ml]
 comments: true
 image:

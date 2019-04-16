@@ -2,8 +2,8 @@ backend:
   name: github
   repo: vivshaw/vivshaw
 
-media_folder: static/assets
 public_folder: assets
+media_folder: content/images
 
 collections:
   - name: blog

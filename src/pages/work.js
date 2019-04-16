@@ -21,7 +21,7 @@ const BlogTitleLink = styled(Link)`
 export default ({ data }) => {
   return (
     <PageWrap>
-      <h1 className="is-size-3">Here are some things I've worked on.</h1>
+      <h1 className="is-size-3">Here are some things I{"'"}ve worked on.</h1>
 
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <BlogBlurb key={node.id}>
@@ -30,7 +30,7 @@ export default ({ data }) => {
               {node.frontmatter.title}
             </BlogTitleLink>{" "}
             <span className="has-text-grey-light">
-              — {node.frontmatter.modified}
+              — {node.frontmatter.date}
             </span>
           </h4>
           <p>{node.frontmatter.blurb || node.excerpt}</p>
@@ -42,14 +42,17 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/work/" } }) {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/work/" } }
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
       totalCount
       edges {
         node {
           id
           frontmatter {
             title
-            modified(formatString: "DD MMMM, YYYY")
+            date(formatString: "DD MMMM, YYYY")
           }
           excerpt
           fields {

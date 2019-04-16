@@ -2,7 +2,7 @@
 layout: media
 title: "scriptophile"
 categories: work
-modified: 2017-02-04T15:56:11-05:00
+date: 2017-02-04T15:56:11-05:00
 excerpt: "A neural network that reads handwriting, written from scratch in Scala."
 share: false
 image:

@@ -2,7 +2,7 @@
 layout: article
 title: "Beautify Your Java Collections with Google Guava"
 categories: blog
-modified: 2017-02-02T01:01:24-05:00
+date: 2017-02-02T01:01:24-05:00
 tags: [java]
 comments: true
 image:

@@ -2,7 +2,7 @@
 layout: article
 title: "Do Robots Dream of Electric Pentameter? Generative Poetry with LSTM Networks"
 categories: blog
-modified: 2017-02-10T00:00:22-05:00
+date: 2017-02-10T00:00:22-05:00
 tags: [python, ml]
 comments: true
 image:

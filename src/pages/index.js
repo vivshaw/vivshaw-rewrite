@@ -139,7 +139,7 @@ export default ({ data }) => {
                   {node.frontmatter.title}
                 </BlogTitleLink>{" "}
                 <span className="has-text-grey-light">
-                  — {node.frontmatter.modified}
+                  — {node.frontmatter.date}
                 </span>
               </h4>
               <p>{node.excerpt}</p>
@@ -172,7 +172,7 @@ export const query = graphql`
   query {
     blog: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/blog/" } }
-      sort: { fields: [frontmatter___modified], order: DESC }
+      sort: { fields: [frontmatter___date], order: DESC }
       limit: 3
     ) {
       edges {
@@ -180,7 +180,7 @@ export const query = graphql`
           id
           frontmatter {
             title
-            modified(formatString: "DD MMMM, YYYY")
+            date(formatString: "DD MMMM, YYYY")
             blurb
           }
           excerpt
@@ -193,7 +193,7 @@ export const query = graphql`
 
     work: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/work/" } }
-      sort: { fields: [frontmatter___modified], order: DESC }
+      sort: { fields: [frontmatter___date], order: DESC }
       limit: 3
     ) {
       edges {
@@ -201,7 +201,7 @@ export const query = graphql`
           id
           frontmatter {
             title
-            modified(formatString: "DD MMMM, YYYY")
+            date(formatString: "DD MMMM, YYYY")
           }
           excerpt
           fields {

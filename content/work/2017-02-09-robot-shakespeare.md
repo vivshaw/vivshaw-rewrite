@@ -2,7 +2,7 @@
 layout: media
 title: "Robot Shakespeare"
 categories: work
-modified: 2017-02-04T15:56:11-05:00
+date: 2017-02-04T15:56:11-05:00
 excerpt: "A Shakespearean sonnet generator, powered by a Keras LSTM network and Flask."
 share: false
 image:
