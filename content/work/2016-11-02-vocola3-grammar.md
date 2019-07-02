@@ -2,10 +2,9 @@
 title: Disability-accessible programming with Vocola 3 grammars
 date: 2017-01-27T01:40:20.000Z
 blurb: Using speech recognition to program by voice alone.
-image:
-  credit: Hannah Vivian Shaw
-  image: /assets/vocola-grammar.png
+image: /assets/vocola-grammar.png
 ---
+
 [My Vocola3 grammars](https://github.com/vivshaw/vocola3-dotfiles) were created out of necessity. To make a long story short, in 2016 I badly injured my wrists and was unable to use a computer at all for several months. Even once I recovered, programming seemed like an impossibility due to the pain of sustained typing. But, after seeing [a presentation by Tavis Rudd](http://ergoemacs.org/emacs/using_voice_to_code.html), I decided to give [voice programming](http://vocola.net/programming-by-voice-FAQ.html) a try, and it worked like a charm.
 
 This project is composed of a bunch of grammars that parse spoken English words and other phonemes into keyboard commands or Python, Java, or web code. Effectively, the result is a language midway between spoken English and written code. The grammars are implemented in [the Vocola 3 scripting language](http://vocola.net/v3/default.asp), and run on the standard Windows Speech Recognition app included on all Windows machines. I've written grammars for 3 levels of use-case:

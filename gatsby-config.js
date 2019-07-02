@@ -73,7 +73,7 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-sass`,
+    "gatsby-plugin-postcss",
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-layout`,

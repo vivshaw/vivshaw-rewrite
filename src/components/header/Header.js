@@ -1,49 +1,41 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
+import { Link } from "gatsby";
 import styled from "styled-components";
+import { color } from "styled-system";
 
-import NavLink from "./NavLink";
-import NavBurger from "./NavBurger";
-import WebBrand from "./WebBrand";
+const VivLink = styled(Link)`
+  transition-duration: 1s;
+  padding: 40px 50px;
+  ${color}
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
 
-import { AppContext } from "../../context/";
-
-const NavBar = styled.nav`
-  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 0% 100%);
-  padding-bottom: 1em;
+  &:hover {
+    color: #000;
+  }
 `;
 
-const Header = () => {
-  const { state } = useContext(AppContext);
+const NavLink = props => <VivLink color="purple.3" {...props} />;
 
-  let menuOpen = state.menuOpen;
+const Nav = () => (
+  <nav className="flex flex-row justify-between w-full">
+    <NavLink color="purple.3" className="tracking-wide" to={"/"}>
+      About
+    </NavLink>
+    <NavLink className="tracking-wide" to={"/"}>
+      Blog
+    </NavLink>
+    <p> </p>
+    <NavLink className="tracking-wide" to={"/"}>
+      Projects
+    </NavLink>
+    <NavLink className="tracking-wide" to={"/"}>
+      Contact
+    </NavLink>
+  </nav>
+);
 
-  useEffect(() => {
-    menuOpen = state.menuOpen;
-  }, [state.menuOpen]);
-
-  return (
-    <NavBar className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
-        <WebBrand />
-        <NavBurger />
-      </div>
-
-      <div
-        id="header-menu"
-        className={`navbar-menu ${menuOpen ? "is-active" : ""}`}
-      >
-        <div className="navbar-start" />
-
-        <div className="navbar-end is-size-5">
-          <NavLink to="/">HOME</NavLink>
-
-          <NavLink to="/blog">BLOG</NavLink>
-
-          <NavLink to="/work">WORK</NavLink>
-        </div>
-      </div>
-    </NavBar>
-  );
-};
-
-export default Header;
+export default Nav;

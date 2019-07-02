@@ -2,8 +2,6 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "styled-components";
 
-import PageWrap from "../components/PageWrap";
-
 const BlogBlurb = styled.div`
   margin-bottom: 1em;
   margin-top: 1em;
@@ -20,7 +18,7 @@ const BlogTitleLink = styled(Link)`
 
 export default ({ data }) => {
   return (
-    <PageWrap>
+    <>
       <h1 className="is-size-3">Sometime I have thoughts about things.</h1>
 
       <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
@@ -38,7 +36,7 @@ export default ({ data }) => {
           <p>{node.frontmatter.blurb || node.excerpt}</p>
         </BlogBlurb>
       ))}
-    </PageWrap>
+    </>
   );
 };
 

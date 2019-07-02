@@ -1,34 +1,31 @@
 import React from "react";
-import styled from "styled-components";
 import { graphql } from "gatsby";
-
-import TOC from "./TOC";
 import FrontMatter from "./FrontMatter";
-import PageWrap from "../../components/PageWrap";
-
-const Content = styled.div`
-  p:first-of-type {
-    font-size: 1.25em;
-
-    //FIXME: Add highlight after intro para;
-  }
-`;
 
 export default ({ data }) => {
   const {
     html,
-    frontmatter: { title, toc, blurb },
-    tableOfContents,
+    frontmatter: { title, blurb, date, image },
   } = data.markdownRemark;
 
   return (
-    <PageWrap>
-      <FrontMatter title={title} blurb={blurb} />
+    <>
+      <div className="leftgutter">
+        <FrontMatter title={title} blurb={blurb} date={date} image={image} />
+      </div>
 
-      {toc && <TOC contentHtml={tableOfContents} />}
-
-      <Content className="content" dangerouslySetInnerHTML={{ __html: html }} />
-    </PageWrap>
+      <div className="leftgutter flex flex-row">
+        <div
+          className="font-serif w-1/2"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+        <div className="w-1/2">
+          <p className="font-sans tracking-wide">
+            Sidebar content will go here
+          </p>
+        </div>
+      </div>
+    </>
   );
 };
 
@@ -38,10 +35,16 @@ export const query = graphql`
       html
       frontmatter {
         title
-        toc
         blurb
+        date(formatString: "DD MMMM, YYYY")
+        image {
+          childImageSharp {
+            fluid(maxWidth: 400, maxHeight: 250) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
-      tableOfContents(maxDepth: 2)
     }
   }
 `;

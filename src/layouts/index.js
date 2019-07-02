@@ -7,6 +7,8 @@ import Header from "../components/header/Header";
 import Footer from "../components/Footer";
 
 import { AppContextProvider } from "../context";
+import { ThemeProvider } from "styled-components";
+import theme from "../styles/theme";
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -21,11 +23,15 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <AppContextProvider>
-        <SEO title="Blog" />
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <ThemeProvider theme={theme}>
+          <div className="flex flex-col min-h-screen">
+            <SEO title="Blog" />
+            <Header siteTitle={data.site.siteMetadata.title} />
 
-        <main>{children}</main>
-        <Footer />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </AppContextProvider>
     )}
   />

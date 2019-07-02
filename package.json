@@ -17,6 +17,7 @@
     "gatsby-plugin-netlify": "^2.0.13",
     "gatsby-plugin-netlify-cms": "^3.0.17",
     "gatsby-plugin-offline": "^2.0.25",
+    "gatsby-plugin-postcss": "^2.0.7",
     "gatsby-plugin-purgecss": "^3.1.1",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-robots-txt": "^1.4.0",
@@ -39,7 +40,10 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "styled-system": "^5.0.12",
+    "typeface-alegreya": "0.0.69",
+    "typeface-alegreya-sans": "0.0.72"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
@@ -52,7 +56,8 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "gatsby-plugin-eslint": "^2.0.4",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "tailwindcss": "^1.0.2"
   },
   "keywords": [
     "gatsby"
