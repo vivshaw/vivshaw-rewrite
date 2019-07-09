@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import styledSanitize from "styled-sanitize";
 
 import SEO from "../components/seo";
@@ -18,17 +18,27 @@ const BaseStyles = createGlobalStyle`
   }
 `;
 
+const Page = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+const Main = styled.main`
+  flex-grow: 1;
+`;
+
 const Layout = ({ children }) => (
   <AppContextProvider>
     <ThemeProvider theme={theme}>
-      <div className="flex flex-col min-h-screen">
+      <Page>
         <BaseStyles />
         <SEO title="Blog" />
         <Header />
 
-        <main className="flex-grow">{children}</main>
+        <Main>{children}</Main>
         <Footer />
-      </div>
+      </Page>
     </ThemeProvider>
   </AppContextProvider>
 );

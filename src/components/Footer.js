@@ -1,13 +1,19 @@
 import React from "react";
+import styled from "styled-components";
+
+const CenteredFooter = styled.footer`
+  text-align: center;
+  flex-shrink: 0;
+`;
 
 const Footer = () => (
-  <footer className="text-center flex-shrink-0">
+  <CenteredFooter>
     Built with{" "}
     <span role="img" aria-label="heart emoji">
       ♥
     </span>
     ️ on the <a href="https://jamstack.org/">JAMStack</a>
-  </footer>
+  </CenteredFooter>
 );
 
 export default Footer;
