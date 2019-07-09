@@ -4,6 +4,8 @@ import styled from "styled-components";
 const CenteredFooter = styled.footer`
   text-align: center;
   flex-shrink: 0;
+  font-family: "Montserrat";
+  font-weight: 500;
 `;
 
 const Footer = () => (
