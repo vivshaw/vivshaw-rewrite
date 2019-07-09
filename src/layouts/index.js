@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StaticQuery, graphql } from "gatsby";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import styledSanitize from "styled-sanitize";
 
 import SEO from "../components/seo";
-import Header from "../components/header/Header";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 import { AppContextProvider } from "../context";
@@ -20,31 +19,18 @@ const BaseStyles = createGlobalStyle`
 `;
 
 const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
-      <AppContextProvider>
-        <ThemeProvider theme={theme}>
-          <div className="flex flex-col min-h-screen">
-            <BaseStyles />
-            <SEO title="Blog" />
-            <Header siteTitle={data.site.siteMetadata.title} />
+  <AppContextProvider>
+    <ThemeProvider theme={theme}>
+      <div className="flex flex-col min-h-screen">
+        <BaseStyles />
+        <SEO title="Blog" />
+        <Header />
 
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
-      </AppContextProvider>
-    )}
-  />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </div>
+    </ThemeProvider>
+  </AppContextProvider>
 );
 
 Layout.propTypes = {

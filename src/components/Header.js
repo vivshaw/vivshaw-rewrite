@@ -20,8 +20,15 @@ const VivLink = styled(Link)`
 
 const NavLink = props => <VivLink color="purple.3" {...props} />;
 
-const Nav = () => (
-  <nav className="flex flex-row justify-between w-full">
+const Nav = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const Header = () => (
+  <Nav>
     <NavLink color="purple.3" className="tracking-wide" to={"/"}>
       About
     </NavLink>
@@ -35,7 +42,7 @@ const Nav = () => (
     <NavLink className="tracking-wide" to={"/"}>
       Contact
     </NavLink>
-  </nav>
+  </Nav>
 );
 
-export default Nav;
+export default Header;
