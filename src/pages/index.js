@@ -1,104 +1,47 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
-import styled from "styled-components";
-import { Box, Text } from "rebass";
+import { graphql } from "gatsby";
+import { Box } from "rebass";
 
-const MainPageSection = props => (
-  <Text
+import MainPageSection from "../components/MainPageSection";
+import MainPageDescriptionList from "../components/MainPageDescriptionList";
+
+const SerifSpan = props => (
+  <span
     {...props}
-    fontSize={"60px"}
-    fontFamily={"Alegreya Sans"}
-    lineHeight={7 / 6}
-    width={2 / 3}
-    as="h2"
-    fontWeight="normal"
-    color="grey.8"
-  ></Text>
+    css={`
+      font-family: "Alegreya";
+      font-weight: 500;
+      color: ${props => props.theme.colors.orange};
+    `}
+  />
 );
 
-const MainPage = styled(Box)`
-  max-width: ${props => props.theme.pageWidth};
-  margin: auto;
-`;
-
-MainPage.defaultProps = {
-  pt: 5,
-};
-
-export default ({ data: { work, blog } }) => {
+export default props => {
   return (
-    <MainPage>
+    <Box
+      {...props}
+      css={`
+        max-width: ${props => props.theme.pageWidth};
+      `}
+      pt={5}
+      mx="auto"
+    >
       <MainPageSection>
-        Hi! I{"'"}m Hannah Vivian Shaw, a front-end engineer who specializes in
-        developing applications for the mobile web.
+        Hi! I{"'"}m{" "}
+        <SerifSpan theme={props.theme}>Hannah Vivian Shaw</SerifSpan>, a
+        front-end engineer who specializes in developing applications for the
+        mobile web.
       </MainPageSection>
 
       <MainPageSection>
         Some recent things I{"'"}ve worked on include{" "}
-        {work.edges.map(
-          (
-            {
-              node: {
-                frontmatter: { title },
-                fields: { slug },
-                id,
-              },
-            },
-            index,
-            array
-          ) =>
-            array.length - 1 === index ? (
-              <>
-                {"and "}
-                <Link to={slug} key={id}>
-                  {title}
-                </Link>
-                {"."}
-              </>
-            ) : (
-              <>
-                <Link to={slug} key={id}>
-                  {title}
-                </Link>
-                {", "}
-              </>
-            )
-        )}
-        Presently I{"'"}m a freelance developer doing contract work.
+        <MainPageDescriptionList articles={props.data.work.edges} />. Presently
+        I{"'"}m a freelance developer doing contract work.
       </MainPageSection>
 
       <MainPageSection>
         I also blog from time to time. Recent subjects I{"'"}ve written on
-        include
-        {blog.edges.map(
-          (
-            {
-              node: {
-                frontmatter: { title },
-                fields: { slug },
-                id,
-              },
-            },
-            index,
-            array
-          ) =>
-            array.length - 1 === index ? (
-              <>
-                {"and "}
-                <Link to={slug} key={id}>
-                  {title}
-                </Link>
-                {"."}
-              </>
-            ) : (
-              <>
-                <Link to={slug} key={id}>
-                  {title}
-                </Link>
-                {", "}
-              </>
-            )
-        )}
+        include <MainPageDescriptionList articles={props.data.blog.edges} />.
       </MainPageSection>
 
       <MainPageSection>
@@ -115,7 +58,7 @@ export default ({ data: { work, blog } }) => {
       </MainPageSection>
 
       <MainPageSection>Thanks for stopping by.</MainPageSection>
-    </MainPage>
+    </Box>
   );
 };
 
