@@ -22,7 +22,7 @@ const MainPage = styled(Box)`
 `;
 
 MainPage.defaultProps = {
-  pt: 1,
+  pt: 5,
 };
 
 export default ({ data: { work, blog } }) => {

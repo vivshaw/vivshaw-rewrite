@@ -6,6 +6,5 @@
 
 // You can delete this file if you're not using it
 
-import "typeface-alegreya";
 import "./src/styles/global.css";
 import "prismjs/themes/prism-solarizedlight.css";
