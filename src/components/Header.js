@@ -1,31 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import Link from "../components/Link";
+import { color } from "styled-system";
 
-const NavLink = props => <Link color="purple.3" {...props} />;
+const Nav = styled.nav``;
 
-const Nav = styled.nav`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
+const HeadLink = styled.p`
+  font-family: "Alegreya Sans";
+  ${color}
+  margin-top: 4em;
+  font-style: italic;
+  letter-spacing: 0.15em;
 `;
 
 const Header = () => (
   <Nav>
-    <NavLink className="tracking-wide" to={"/"}>
-      About
-    </NavLink>
-    <NavLink className="tracking-wide" to={"/"}>
-      Blog
-    </NavLink>
-    <p> </p>
-    <NavLink className="tracking-wide" to={"/"}>
-      Projects
-    </NavLink>
-    <NavLink className="tracking-wide" to={"/"}>
-      Contact
-    </NavLink>
+    <HeadLink className="leftgutter" color="grey.6">
+      vivshaw.net
+    </HeadLink>
   </Nav>
 );
 
