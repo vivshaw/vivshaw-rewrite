@@ -1,79 +1,121 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
-import Img from "gatsby-image";
+import { graphql, Link } from "gatsby";
+import styled from "styled-components";
+import { Box, Text } from "rebass";
 
-export default ({ data: { blog, work } }) => {
+const MainPageSection = props => (
+  <Text
+    {...props}
+    fontSize={"60px"}
+    fontFamily={"Alegreya Sans"}
+    lineHeight={7 / 6}
+    width={2 / 3}
+    as="h2"
+    fontWeight="normal"
+    color="grey.8"
+  ></Text>
+);
+
+const MainPage = styled(Box)`
+  max-width: ${props => props.theme.pageWidth};
+  margin: auto;
+`;
+
+MainPage.defaultProps = {
+  pt: 1,
+};
+
+export default ({ data: { work, blog } }) => {
   return (
-    <>
-      <div className="leftgutter">
-        <h1 className="font-serif text-3xl font-medium">Hannah Vivian Shaw</h1>
-        <h2 className="font-serif text-2xl text-gray-800">Frontend Engineer</h2>
-        <div className="mt-4 mb-4 font-sans">social block goes here</div>
-        <h2 className="font-serif text-gray-600 text-xl w-108">
-          JavaScript developer. React enthusiast. Interested in functional
-          programming and machine learning.
-        </h2>
-      </div>
+    <MainPage>
+      <MainPageSection>
+        Hi! I{"'"}m Hannah Vivian Shaw, a front-end engineer who specializes in
+        developing applications for the mobile web.
+      </MainPageSection>
 
-      <div className="flex flex-col md:flex-row leftgutter mt-6">
-        <section className="w-1/2 pr-8">
-          <h6 className="font-sans uppercase text-gray-600 mb-4 tracking-widest">
-            Articles
-          </h6>
-
-          {blog.edges.map(
-            ({
+      <MainPageSection>
+        Some recent things I{"'"}ve worked on include{" "}
+        {work.edges.map(
+          (
+            {
               node: {
-                frontmatter: { date, title },
+                frontmatter: { title },
                 fields: { slug },
                 id,
               },
-            }) => (
-              <div
-                className="mb-2 flex flex-row justify-between relative"
-                key={id}
-              >
-                <h4 className="pr-8 pl-1 font-serif w-2/3 text-xl bloglink inline">
-                  <Link to={slug}>{title}</Link>
-                </h4>
-                <time className="font-sans uppercase tracking-widest text-gray-600 w-1/3">
-                  {date}
-                </time>
-              </div>
+            },
+            index,
+            array
+          ) =>
+            array.length - 1 === index ? (
+              <>
+                {"and "}
+                <Link to={slug} key={id}>
+                  {title}
+                </Link>
+                {"."}
+              </>
+            ) : (
+              <>
+                <Link to={slug} key={id}>
+                  {title}
+                </Link>
+                {", "}
+              </>
             )
-          )}
-        </section>
+        )}
+        Presently I{"'"}m a freelance developer doing contract work.
+      </MainPageSection>
 
-        <section className="w-1/2 pr-8">
-          <h6 className="font-sans uppercase text-gray-600 mb-4 tracking-widest">
-            Projects
-          </h6>
+      <MainPageSection>
+        I also blog from time to time. Recent subjects I{"'"}ve written on
+        include
+        {blog.edges.map(
+          (
+            {
+              node: {
+                frontmatter: { title },
+                fields: { slug },
+                id,
+              },
+            },
+            index,
+            array
+          ) =>
+            array.length - 1 === index ? (
+              <>
+                {"and "}
+                <Link to={slug} key={id}>
+                  {title}
+                </Link>
+                {"."}
+              </>
+            ) : (
+              <>
+                <Link to={slug} key={id}>
+                  {title}
+                </Link>
+                {", "}
+              </>
+            )
+        )}
+      </MainPageSection>
 
-          <div className="flex flex-row flex-wrap">
-            {work.edges.map(
-              ({
-                node: {
-                  frontmatter: { image, title },
-                  fields: { slug },
-                  id,
-                },
-              }) => (
-                <div className="w-1/2 flex flex-col mb-4 pr-8" key={id}>
-                  <Img
-                    fluid={image.childImageSharp.fluid}
-                    alt=""
-                    className="mb-2 w-full"
-                  />
-                  <h4 className="font-sans tracking-wide">
-                    <Link to={slug}>{title}</Link>
-                  </h4>
-                </div>
-              )
-            )}
-          </div>
-        </section>
-      </div>
-    </>
+      <MainPageSection>
+        Aside from my work, you may know me for my love of weird fiction and
+        Cronenberg films, my tinkering with Nikon cameras, or my encyclopedic
+        post-punk collection.
+      </MainPageSection>
+
+      <MainPageSection>
+        Elsewhere, I can be found on{" "}
+        <a href="https://github.com/vivshaw/">GitHub</a>,{" "}
+        <a href="https://twitter.com/vvvivshaw">Twitter</a>, or{" "}
+        <a href="mailto:vivshaw@vivshaw.net">via email</a>.
+      </MainPageSection>
+
+      <MainPageSection>Thanks for stopping by.</MainPageSection>
+    </MainPage>
   );
 };
 
@@ -82,7 +124,7 @@ export const query = graphql`
     blog: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/blog/" } }
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 4
+      limit: 3
     ) {
       edges {
         node {
@@ -101,7 +143,7 @@ export const query = graphql`
     work: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/work/" } }
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 6
+      limit: 3
     ) {
       edges {
         node {
