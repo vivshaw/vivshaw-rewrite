@@ -5,9 +5,7 @@ import styledSanitize from "styled-sanitize";
 
 import SEO from "../components/seo";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 
-import { AppContextProvider } from "../context";
 import theme from "../styles/theme";
 
 const BaseStyles = createGlobalStyle`
@@ -29,18 +27,15 @@ const Main = styled.main`
 `;
 
 const Layout = ({ children }) => (
-  <AppContextProvider>
-    <ThemeProvider theme={theme}>
-      <Page>
-        <BaseStyles />
-        <SEO title="Blog" />
-        <Header />
+  <ThemeProvider theme={theme}>
+    <Page>
+      <BaseStyles />
+      <SEO title="Blog" />
+      <Header />
 
-        <Main>{children}</Main>
-        <Footer />
-      </Page>
-    </ThemeProvider>
-  </AppContextProvider>
+      <Main>{children}</Main>
+    </Page>
+  </ThemeProvider>
 );
 
 Layout.propTypes = {
