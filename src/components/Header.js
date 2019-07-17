@@ -1,22 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import { color } from "styled-system";
+import { Text } from "rebass";
 
 const Nav = styled.nav``;
 
-const HeadLink = styled.p`
+const HeadLink = styled(Text)`
   font-family: "Alegreya Sans";
-  ${color}
+  margin: auto;
   margin-top: 4em;
   font-style: italic;
   letter-spacing: 0.15em;
+  max-width: ${props => props.theme.pageWidth};
 `;
 
 const Header = () => (
   <Nav>
-    <HeadLink className="leftgutter" color="grey.6">
-      vivshaw.net
-    </HeadLink>
+    <HeadLink color="grey.6">vivshaw.net</HeadLink>
   </Nav>
 );
 
