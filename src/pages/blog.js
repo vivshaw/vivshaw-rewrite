@@ -1,42 +1,56 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import styled from "styled-components";
+import { Box, Text } from "rebass";
 
-const BlogBlurb = styled.div`
-  margin-bottom: 1em;
-  margin-top: 1em;
-`;
+import Link from "../components/Link";
 
-//FIXME: Better color for links, plus move link style into global overrides
 const BlogTitleLink = styled(Link)`
-  text-decoration: underline;
-  color: inherit;
   &:hover {
-    background-color: lightpink;
+    color: black;
   }
 `;
 
 export default ({ data }) => {
   return (
-    <>
-      <h1 className="is-size-3">Sometime I have thoughts about things.</h1>
-
-      <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+    <Box
+      css={`
+        max-width: 42rem;
+      `}
+      mt="15vh"
+      mx="auto"
+    >
+      <Text fontFamily="sans" as="h1" fontWeight={500} mb={4}>
+        Sometimes I have thoughts about things.
+        <br />
+        You can read them here.
+      </Text>
 
       {data.allMarkdownRemark.edges.map(({ node }) => (
-        <BlogBlurb key={node.id}>
-          <h4 className="is-size-4">
-            <BlogTitleLink to={node.fields.slug}>
+        <Box mb={4} key={node.id}>
+          <BlogTitleLink to={node.fields.slug}>
+            <Text
+              fontFamily="sans"
+              as="h3"
+              fontWeight={700}
+              color="red"
+              fontSize={4}
+              mb={2}
+            >
               {node.frontmatter.title}
-            </BlogTitleLink>{" "}
-            <span className="has-text-grey-light">
-              — {node.frontmatter.date}
-            </span>
-          </h4>
-          <p>{node.frontmatter.blurb || node.excerpt}</p>
-        </BlogBlurb>
+            </Text>
+          </BlogTitleLink>
+
+          <Text as="aside" fontFamily="serif" mb={2} fontSize={2}>
+            <time>{node.frontmatter.date}</time> • ☕️☕️☕️ 16 min read
+          </Text>
+
+          <Text as="p" fontFamily="serif" fontSize={3}>
+            {node.frontmatter.blurb || node.excerpt}
+          </Text>
+        </Box>
       ))}
-    </>
+    </Box>
   );
 };
 

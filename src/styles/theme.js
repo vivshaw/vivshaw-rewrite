@@ -17,10 +17,12 @@ export default {
     text: "#3a3a36",
     yellow: "#f4af51",
     blue: "#001de7",
-    red: "DD3D41",
+    red: "#DD3D41",
   },
   fonts: {
     sans: "Rubik",
+    serif: "Spectral",
+    mono: "IBM Plex Mono",
   },
   pageWidth: "55vw",
 };
