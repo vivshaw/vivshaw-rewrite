@@ -28,7 +28,9 @@ const Header = props => (
     color="text"
     alignItems="center"
   >
-    <HeaderBrand>Hannah Shaw</HeaderBrand>
+    <Link to="/">
+      <HeaderBrand>Hannah Shaw</HeaderBrand>
+    </Link>
     <Nav>
       <NavLink to="/blog">Blog</NavLink>
       <NavLink to="/work">Work</NavLink>
