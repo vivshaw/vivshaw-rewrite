@@ -1,32 +1,71 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
+import { Box, Text, Flex } from "rebass";
 
 const FrontMatter = ({ title, blurb, date, image }) => {
   return (
-    <div className="flex flex-row">
-      <div className="mt-8 mb-8">
-        <div className="mb-16 frontmatter">
-          <h6 className="text-l font-sans tracking-widest uppercase text-green-500 mb-2">
-            X minute read
-          </h6>
-          <h6 className="text-l font-sans tracking-widest uppercase text-green-500 mb-4">
-            {date}
-          </h6>
-        </div>
+    <Box mt={["8vh", "10vh", "15vh"]}>
+      <Img fluid={image.childImageSharp.fluid} alt="" />
 
-        <h1 className="text-4xl font-serif tracking-wide font-medium">
-          {title}
-        </h1>
+      <Text
+        as="h1"
+        fontFamily="serif"
+        fontWeight={400}
+        fontSize={"36px"}
+        lineHeight={"44px"}
+        mt={3}
+        mx={"4vw"}
+      >
+        {title}
+      </Text>
 
-        {blurb && (
-          <h2 className="text-4xl font-serif tracking-wide font-medium">
-            {blurb}
-          </h2>
-        )}
-      </div>
-      <Img fluid={image.childImageSharp.fluid} alt="" className="mb-2 w-full" />
-    </div>
+      {blurb && (
+        <Text
+          as="h2"
+          fontFamily="sans"
+          fontSize={4}
+          fontWeight={300}
+          color="grey.6"
+          mx={"4vw"}
+          mt={1}
+        >
+          {blurb}
+        </Text>
+      )}
+
+      <Flex mx={"4vw"} my={4} flexDirection="row" alignItems="center">
+        <Box
+          css={`
+            height: 48px;
+            border-radius: 50%;
+          `}
+          backgroundColor="red"
+          width={"48px"}
+          mr={2}
+        ></Box>
+        <Box>
+          <Text
+            fontFamily="sans"
+            fontWeight="normal"
+            fontSize={1}
+            as="h6"
+            mb={1}
+          >
+            Hannah Vivian Shaw
+          </Text>
+          <Text
+            as="h6"
+            fontFamily="sans"
+            fontWeight="normal"
+            fontSize={1}
+            color="grey.6"
+          >
+            {date} · 5 min read
+          </Text>
+        </Box>
+      </Flex>
+    </Box>
   );
 };
 
