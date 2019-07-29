@@ -15,10 +15,11 @@ export default ({ data }) => {
   return (
     <Box
       css={`
-        max-width: 42rem;
+        max-width: 50rem;
       `}
       mt="15vh"
       mx="auto"
+      px="4vw"
     >
       <Text fontFamily="sans" as="h1" fontWeight={500} mb={4}>
         Sometimes I have thoughts about things.
