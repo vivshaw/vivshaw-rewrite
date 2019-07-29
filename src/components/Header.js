@@ -1,31 +1,39 @@
 import React from "react";
-import { Flex } from "rebass";
+import { Flex, Text } from "rebass";
 
-import NavBrand from "./NavBrand";
-import NavDot from "./NavDot";
+import HeaderBrand from "./HeaderBrand";
+import Nav from "./Nav";
+import Link from "./Link";
+
+const NavLink = props => (
+  <Link to={props.to}>
+    <Text {...props} fontFamily="sans" />
+  </Link>
+);
 
 const Header = props => (
   <Flex
     {...props}
     css={`
-      max-width: ${props => props.theme.pageWidth};
-      border-bottom: 1px solid black;
       position: fixed;
-      right: 50%;
-      transform: translate(50%, 0);
+      top: 0;
+      right: 0;
+      left: 0;
     `}
     flexDirection="row"
     justifyContent="space-between"
-    py={1}
-    mx="auto"
-    width={1}
-    as="nav"
-    color="orange"
+    my={"4vw"}
+    px={"4vw"}
+    as="header"
+    color="text"
     alignItems="center"
-    backgroundColor="white"
   >
-    <NavDot />
-    <NavBrand>vivshaw.net</NavBrand>
+    <HeaderBrand>Hannah Shaw</HeaderBrand>
+    <Nav>
+      <NavLink to="/blog">Blog</NavLink>
+      <NavLink to="/work">Work</NavLink>
+      <NavLink>Contact</NavLink>
+    </Nav>
   </Flex>
 );
 

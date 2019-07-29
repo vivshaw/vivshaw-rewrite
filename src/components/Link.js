@@ -1,20 +1,20 @@
+import React from "react";
 import { Link as BaseLink } from "gatsby";
-import styled from "styled-components";
-import { color } from "styled-system";
+import { Link as RebassLink } from "rebass";
 
-const Link = styled(BaseLink)`
-  transition-duration: 1s;
-  padding: 40px 50px;
-  ${color}
-  text-decoration: none;
-  font-size: 24px;
-  font-weight: 600;
-  display: inline-block;
-  font-family: "Montserrat", sans-serif;
+const Link = props => (
+  <RebassLink
+    {...props}
+    css={`
+      text-decoration: none;
 
-  &:hover {
-    color: #000;
-  }
-`;
+      &:hover {
+        color: #000;
+      }
+    `}
+    as={BaseLink}
+    color="text"
+  />
+);
 
 export default Link;

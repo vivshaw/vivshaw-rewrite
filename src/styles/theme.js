@@ -14,6 +14,10 @@ export default {
       "#2d3748",
       "#1a202c",
     ],
+    text: "#3a3a36",
   },
-  pageWidth: "1200px",
+  fonts: {
+    sans: "Rubik",
+  },
+  pageWidth: "55vw",
 };
