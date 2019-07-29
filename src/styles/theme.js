@@ -15,6 +15,9 @@ export default {
       "#1a202c",
     ],
     text: "#3a3a36",
+    yellow: "#f4af51",
+    blue: "#001de7",
+    red: "DD3D41",
   },
   fonts: {
     sans: "Rubik",
