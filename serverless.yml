@@ -1,0 +1,25 @@
+service: vivshaw.net
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+  # you can overwrite defaults here
+  stage: "prod"
+  region: "us-east-1"
+
+plugins:
+  - serverless-finch
+
+custom:
+  client:
+    bucketName: vivshaw.net
+    distributionFolder: public
+    errorDocument: 404.html
+    objectHeaders:
+      "*.html":
+        - name: Cache-Control
+          value: no-cache
+      sw.js:
+        - name: Cache-Control
+          value: no-cache

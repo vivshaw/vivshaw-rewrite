@@ -56,7 +56,9 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "gatsby-plugin-eslint": "^2.0.4",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "serverless": "^1.48.4",
+    "serverless-finch": "^2.4.2"
   },
   "keywords": [
     "gatsby"
@@ -70,7 +72,9 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "deploy": "npm run-script build && serverless client deploy --no-confirm",
+    "undeploy": "serverless client remove"
   },
   "repository": {
     "type": "git",
