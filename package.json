@@ -1,9 +1,10 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "vivshaw.net",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Hannah Vivian Shaw's portfolio & blog",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Hannah Vivian Shaw <hvivianshaw@gmail.com> (https://vivshaw.net)",
+  "homepage": "https://vivshaw.net",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.3.23",
@@ -36,8 +37,7 @@
     "rebass": "^3.1.1",
     "styled-components": "^4.2.0",
     "styled-sanitize": "^1.1.2",
-    "styled-system": "^5.0.12",
-    "typeface-alegreya": "0.0.69"
+    "styled-system": "^5.0.12"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -61,7 +61,10 @@
     "serverless-finch": "^2.4.2"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "serverless",
+    "blog",
+    "styled-components"
   ],
   "license": "MIT",
   "scripts": {
@@ -78,9 +81,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/vivshaw/vivshaw"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/vivshaw/vivshaw/issues"
   }
 }
