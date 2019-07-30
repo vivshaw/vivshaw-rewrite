@@ -32,8 +32,8 @@ const Header = props => (
       <HeaderBrand>Hannah Shaw</HeaderBrand>
     </Link>
     <Nav>
-      <NavLink to="/blog">Blog</NavLink>
-      <NavLink to="/work">Work</NavLink>
+      <NavLink to="/blog/">Blog</NavLink>
+      <NavLink to="/work/">Work</NavLink>
       <NavLink>Contact</NavLink>
     </Nav>
   </Flex>
