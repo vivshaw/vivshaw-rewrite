@@ -87,5 +87,27 @@ module.exports = {
         printRejected: true, // Print removed selectors and processed file names
       },
     },
+    {
+      resolve: `gatsby-plugin-humans-txt`,
+      options: {
+        header: "vivshaw.net",
+        team: [
+          {
+            Developer: `Hannah Vivian Shaw`,
+            GitHub: `vivshaw`,
+            Twitter: `@vvvivshaw`,
+            Location: `Burlington, VT`,
+          },
+        ],
+        thanks: [`Whoever invented coffee. You're pretty swell.`],
+        site: {
+          "Last update": `2019/7/30`,
+          Standards: `HTML5, CSS, JavaScript, JSX`,
+          Components: `Gatsby, React, styled-components, serverless, AWS`,
+          Softwares: `Visual Studio Code`,
+        },
+        note: `Built with love on the JAMStack.`,
+      },
+    },
   ],
 };
