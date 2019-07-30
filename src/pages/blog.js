@@ -43,8 +43,9 @@ export default ({ data }) => {
           </BlogTitleLink>
 
           <Text as="aside" fontFamily="serif" mb={2} fontSize={2}>
-            <time>{node.frontmatter.date}</time> • {"☕️".repeat(15 / 5 + 1)} 15
-            minute read
+            <time>{node.frontmatter.date}</time> •{" "}
+            {"☕️".repeat(node.timeToRead / 5 + 1)}
+            {node.timeToRead.toString()} minute read
           </Text>
 
           <Text as="p" fontFamily="serif" fontSize={3}>
@@ -72,6 +73,7 @@ export const query = graphql`
             blurb
           }
           excerpt
+          timeToRead
           fields {
             slug
           }
