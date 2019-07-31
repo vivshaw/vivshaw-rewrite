@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "styled-components";
+import Masonry from "react-masonry-css";
+import { Box, Text } from "rebass";
+import Img from "gatsby-image";
 
 const BlogBlurb = styled.div`
   margin-bottom: 1em;
@@ -16,25 +19,45 @@ const BlogTitleLink = styled(Link)`
   }
 `;
 
+const PortfolioLayout = styled(Masonry)`
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+
+  .masonry-grid_column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+  }
+
+  .masonry-grid_column > div {
+    margin-bottom: 30px;
+  }
+`;
+
 export default ({ data }) => {
   return (
-    <>
-      <h1 className="is-size-3">Here are some things I{"'"}ve worked on.</h1>
+    <Box mt="15vh" mx="auto" px="4vw" width={1}>
+      <Text fontFamily="sans" as="h1" fontWeight={500} mb={4}>
+        Here are some things I{"'"}ve worked on.
+      </Text>
 
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-        <BlogBlurb key={node.id}>
-          <h4 className="is-size-4">
-            <BlogTitleLink to={node.fields.slug}>
-              {node.frontmatter.title}
-            </BlogTitleLink>{" "}
-            <span className="has-text-grey-light">
-              — {node.frontmatter.date}
-            </span>
-          </h4>
-          <p>{node.frontmatter.blurb || node.excerpt}</p>
-        </BlogBlurb>
-      ))}
-    </>
+      <PortfolioLayout breakpointCols={3} columnClassName="masonry-grid_column">
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          <BlogBlurb key={node.id}>
+            <Img fluid={node.frontmatter.image.childImageSharp.fluid} alt="" />
+            <h4 className="is-size-4">
+              <BlogTitleLink to={node.fields.slug}>
+                {node.frontmatter.title}
+              </BlogTitleLink>{" "}
+              <span className="has-text-grey-light">
+                — {node.frontmatter.date}
+              </span>
+            </h4>
+            <p>{node.frontmatter.blurb || node.excerpt}</p>
+          </BlogBlurb>
+        ))}
+      </PortfolioLayout>
+    </Box>
   );
 };
 
@@ -51,6 +74,13 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
+            image {
+              childImageSharp {
+                fluid(maxWidth: 400, maxHeight: 250) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           excerpt
           fields {

@@ -110,6 +110,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://vivshaw.net`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
