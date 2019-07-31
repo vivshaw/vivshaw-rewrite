@@ -42,7 +42,7 @@ export default ({ data }) => {
       </Text>
 
       <PortfolioLayout breakpointCols={3} columnClassName="masonry-grid_column">
-        {data.allMarkdownRemark.edges.map(({ node }) => (
+        {data.workPosts.edges.map(({ node }) => (
           <BlogBlurb key={node.id}>
             <Img fluid={node.frontmatter.image.childImageSharp.fluid} alt="" />
             <h4 className="is-size-4">
@@ -63,7 +63,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(
+    workPosts: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/work/" } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {

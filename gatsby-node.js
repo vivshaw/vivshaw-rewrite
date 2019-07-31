@@ -21,7 +21,21 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   return graphql(`
     {
-      allMarkdownRemark {
+      blogPosts: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/blog/" } }
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+
+      workPosts: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/work/" } }
+      ) {
         edges {
           node {
             fields {
@@ -32,10 +46,24 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
   `).then(result => {
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    // Create blog posts
+    result.data.blogPosts.edges.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
-        component: path.resolve(`./src/templates/blog-post/index.js`),
+        component: path.resolve(`./src/templates/blogPost/index.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          slug: node.fields.slug,
+        },
+      });
+    });
+
+    // Create work pages
+    result.data.workPosts.edges.forEach(({ node }) => {
+      createPage({
+        path: node.fields.slug,
+        component: path.resolve(`./src/templates/workPost/index.js`),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.

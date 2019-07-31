@@ -34,7 +34,7 @@ const Header = props => (
     <Nav>
       <NavLink to="/blog/">Blog</NavLink>
       <NavLink to="/work/">Work</NavLink>
-      <NavLink>Contact</NavLink>
+      <NavLink to="/">Contact</NavLink>
     </Nav>
   </Flex>
 );

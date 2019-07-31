@@ -27,7 +27,7 @@ export default ({ data }) => {
         You can read them here.
       </Text>
 
-      {data.allMarkdownRemark.edges.map(({ node }) => (
+      {data.blogPosts.edges.map(({ node }) => (
         <Box mb={4} key={node.id}>
           <BlogTitleLink to={node.fields.slug}>
             <Text
@@ -59,7 +59,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(
+    blogPosts: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/blog/" } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {

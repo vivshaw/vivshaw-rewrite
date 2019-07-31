@@ -29,7 +29,7 @@ export default ({ data }) => {
   const {
     html,
     frontmatter: { title, blurb, date, image },
-  } = data.markdownRemark;
+  } = data.workPost;
 
   return (
     <>
@@ -46,7 +46,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    workPost: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
