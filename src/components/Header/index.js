@@ -19,13 +19,16 @@ const Header = props => (
       top: 0;
       right: 0;
       left: 0;
+      z-index: 99;
     `}
     flexDirection="row"
     justifyContent="space-between"
-    my={"4vw"}
+    pt={"4vw"}
+    mb={"4vw"}
     px={"4vw"}
     as="header"
     color="text"
+    backgroundColor="bg"
     alignItems="center"
   >
     <Link to="/">
