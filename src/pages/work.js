@@ -45,15 +45,19 @@ export default ({ data }) => {
         {data.workPosts.edges.map(({ node }) => (
           <BlogBlurb key={node.id}>
             <Img fluid={node.frontmatter.image.childImageSharp.fluid} alt="" />
-            <h4 className="is-size-4">
+
+            <Text fontFamily="sans" fontSize={3}>
               <BlogTitleLink to={node.fields.slug}>
                 {node.frontmatter.title}
               </BlogTitleLink>{" "}
               <span className="has-text-grey-light">
                 — {node.frontmatter.date}
               </span>
-            </h4>
-            <p>{node.frontmatter.blurb || node.excerpt}</p>
+            </Text>
+
+            <Text fontFamily="serif" fontSize={2}>
+              {node.frontmatter.blurb || node.excerpt}
+            </Text>
           </BlogBlurb>
         ))}
       </PortfolioLayout>
