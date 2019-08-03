@@ -11,7 +11,7 @@ const VizContent = ({ image }) => {
   );
 };
 
-FrontMatter.PropTypes = {
+VizContent.PropTypes = {
   title: PropTypes.string.isRequired,
   blurb: PropTypes.string,
 };

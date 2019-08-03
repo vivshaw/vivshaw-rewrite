@@ -69,7 +69,7 @@ const BlogHeader = ({ title, blurb, date, image, timeToRead }) => {
   );
 };
 
-FrontMatter.PropTypes = {
+BlogHeader.PropTypes = {
   title: PropTypes.string.isRequired,
   blurb: PropTypes.string,
 };
