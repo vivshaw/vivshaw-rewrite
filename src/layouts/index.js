@@ -32,7 +32,7 @@ const BaseStyles = createGlobalStyle`
 
   body {
     padding: 0;
-    background-color: #f7f7f3;
+    background-color: ${props => props.theme.colors.bg};
   }
 `;
 
