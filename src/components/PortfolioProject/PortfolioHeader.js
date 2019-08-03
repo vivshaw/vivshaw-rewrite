@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "rebass";
 
-export default ({ title, blurb }) => (
+const PortfolioHeader = ({ title, blurb }) => (
   <>
     <Text
       as="h1"
@@ -28,3 +28,5 @@ export default ({ title, blurb }) => (
     )}
   </>
 );
+
+export default PortfolioHeader;

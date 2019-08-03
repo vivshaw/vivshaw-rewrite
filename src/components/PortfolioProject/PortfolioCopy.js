@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "rebass";
 
-const Copy = props => (
+const PortfolioCopy = props => (
   <Box
     {...props}
     css={`
@@ -25,4 +25,4 @@ const Copy = props => (
   />
 );
 
-export default Copy;
+export default PortfolioCopy;

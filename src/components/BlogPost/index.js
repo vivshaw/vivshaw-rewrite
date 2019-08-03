@@ -4,7 +4,7 @@ import { Flex } from "rebass";
 import BlogHeader from "./BlogHeader";
 import BlogCopy from "./BlogCopy";
 
-export default ({ title, blurb, date, image, html, timeToRead }) => (
+const BlogPost = ({ title, blurb, date, image, html, timeToRead }) => (
   <Flex
     css={`
       max-width: 45em;
@@ -25,3 +25,5 @@ export default ({ title, blurb, date, image, html, timeToRead }) => (
     <BlogCopy dangerouslySetInnerHTML={{ __html: html }} />
   </Flex>
 );
+
+export default BlogPost;

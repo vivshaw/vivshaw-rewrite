@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Img from "gatsby-image";
 import { Box, Text, Flex } from "rebass";
 
-const FrontMatter = ({ title, blurb, date, image, timeToRead }) => {
+const BlogHeader = ({ title, blurb, date, image, timeToRead }) => {
   return (
     <Box>
       <Img fluid={image.childImageSharp.fluid} alt="" />
@@ -74,4 +74,4 @@ FrontMatter.PropTypes = {
   blurb: PropTypes.string,
 };
 
-export default FrontMatter;
+export default BlogHeader;
