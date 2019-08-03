@@ -3,7 +3,7 @@ import { Flex, Text } from "rebass";
 
 import HeaderBrand from "./HeaderBrand";
 import Nav from "./Nav";
-import Link from "./Link";
+import Link from "../Link";
 
 const NavLink = props => (
   <Link to={props.to}>
