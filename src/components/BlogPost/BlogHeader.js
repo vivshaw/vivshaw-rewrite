@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import Img from "gatsby-image";
 import { Box, Text, Flex } from "rebass";
 
-const FrontMatter = ({ title, blurb, date, image }) => {
+const FrontMatter = ({ title, blurb, date, image, timeToRead }) => {
   return (
-    <Box mt={["8vh", "10vh", "15vh"]}>
+    <Box>
       <Img fluid={image.childImageSharp.fluid} alt="" />
 
       <Text
@@ -61,7 +61,7 @@ const FrontMatter = ({ title, blurb, date, image }) => {
             fontSize={1}
             color="grey.6"
           >
-            {date} · 5 min read
+            {date} · {timeToRead} min read
           </Text>
         </Box>
       </Flex>
