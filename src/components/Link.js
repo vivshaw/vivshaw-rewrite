@@ -7,13 +7,13 @@ const Link = props => (
     {...props}
     css={`
       text-decoration: none;
+      color: inherit;
 
       &:hover {
         color: #000;
       }
     `}
     as={BaseLink}
-    color="text"
   />
 );
 

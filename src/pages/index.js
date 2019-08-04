@@ -15,7 +15,8 @@ export default props => {
       justifyContent="space-around"
     >
       <MainPageText>
-        Hannah is a Vermont-based, React-loving front-end engineer.
+        Hannah is a <em>Vermont</em>-based, <em>React</em>-loving front-end
+        engineer.
       </MainPageText>
     </Flex>
   );

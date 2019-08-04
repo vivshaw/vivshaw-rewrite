@@ -4,7 +4,7 @@ import styledSanitize from "styled-sanitize";
 const BaseStyles = createGlobalStyle`
   @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i&display=swap");
   @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700&display=swap");
-  @import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,500,600,700&display=swap");
+  @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700&display=swap');
 
   ${styledSanitize}
   

@@ -7,11 +7,12 @@ const MainPageText = props => (
     css={`
       text-align: center;
     `}
-    fontSize={[4, 5]}
-    fontFamily="sans"
+    fontSize={[5, 6, 8]}
+    lineHeight={1.25}
+    letterSpacing={-2}
+    fontFamily="serif"
     as="h1"
     fontWeight="normal"
-    color="text"
     width={["80%", "78%", "73%"]}
   />
 );
