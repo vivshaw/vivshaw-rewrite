@@ -7,7 +7,7 @@ import SEO from "../components/seo";
 import Header from "../components/Header";
 
 import theme from "../styles/theme";
-import blobs from "../../static/assets/blobs.svg";
+import blobs from "../images/blobs.svg";
 
 const Page = styled.div`
   display: flex;

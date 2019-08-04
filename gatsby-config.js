@@ -33,7 +33,7 @@ module.exports = {
         background_color: `#ec008c`,
         theme_color: `#ec008c`,
         display: `standalone`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/logoblob.svg`, // This path is relative to the root of the site.
       },
     },
     {
