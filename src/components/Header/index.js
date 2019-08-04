@@ -6,7 +6,13 @@ import Link from "../Link";
 
 const NavLink = props => (
   <Link to={props.to}>
-    <Text {...props} fontFamily="sans" letterSpacing={2} />
+    <Text
+      {...props}
+      fontFamily="sans"
+      fontWeight={600}
+      fontSize={1}
+      letterSpacing={2}
+    />
   </Link>
 );
 
@@ -30,7 +36,7 @@ const Header = props => (
     alignItems="center"
   >
     <Nav>
-      <NavLink to="/blog/">BLOG</NavLink>
+      <NavLink to="/blog/">JOURNAL</NavLink>
       <NavLink to="/work/">PORTFOLIO</NavLink>
       <NavLink to="/">ABOUT</NavLink>
     </Nav>

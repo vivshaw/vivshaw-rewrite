@@ -16,7 +16,7 @@ export default {
     ],
     text: "#3a3a36",
     yellow: "#f4af51",
-    blue: "#001de7",
+    blue: "#2e3192",
     red: "#DD3D41",
     bg: "#f7f7f3",
   },

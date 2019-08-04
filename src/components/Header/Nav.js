@@ -4,18 +4,11 @@ import { Flex } from "rebass";
 const NavLinks = props => (
   <Flex
     {...props}
-    css={`
-      & a {
-        padding-right: 16px;
-      }
-
-      & a:last-child {
-        padding-right: 0px;
-      }
-    `}
     flexDirection="row"
     as="nav"
+    justifyContent="space-between"
     alignItems="center"
+    width={[2 / 3, 1 / 2, 1 / 3]}
   />
 );
 
