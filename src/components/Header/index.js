@@ -28,7 +28,6 @@ const Header = props => (
     px={"4vw"}
     as="header"
     color="text"
-    backgroundColor="bg"
     alignItems="center"
   >
     <Link to="/">
