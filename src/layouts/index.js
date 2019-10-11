@@ -7,7 +7,6 @@ import SEO from "../components/seo";
 import Header from "../components/Header";
 
 import theme from "../styles/theme";
-import blobs from "../images/blobs.svg";
 
 const Page = styled.div`
   display: flex;
@@ -19,21 +18,12 @@ const Main = styled.main`
   flex-grow: 1;
 `;
 
-const BackgroundBlobs = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  background-image: url(${blobs});
-  background-size: cover;
-  z-index: -100;
-`;
-
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <Page>
       <BaseStyles />
       <SEO title="Blog" />
-      <BackgroundBlobs />
+
       <Header />
 
       <Main>{children}</Main>

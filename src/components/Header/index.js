@@ -3,7 +3,6 @@ import { Flex, Text } from "rebass";
 
 import Nav from "./Nav";
 import Link from "../Link";
-import HeaderBrand from "./HeaderBrand";
 
 const NavLink = props => (
   <Link to={props.to}>
@@ -33,10 +32,9 @@ const Header = props => (
     mb={"4vw"}
     px={"4vw"}
     as="header"
-    color="blue"
+    color="vivshawBlue"
     alignItems="center"
   >
-    <HeaderBrand />
     <Nav>
       <NavLink to="/blog/">JOURNAL</NavLink>
       <NavLink to="/work/">PORTFOLIO</NavLink>

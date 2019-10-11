@@ -5,15 +5,18 @@ const MainPageText = props => (
   <Text
     {...props}
     css={`
-      text-align: center;
+      max-width: 45rem;
     `}
-    fontSize={[5, 6, 8]}
-    lineHeight={1.25}
-    letterSpacing={-2}
-    fontFamily="serif"
+    fontSize={[5, 7, 8]}
+    lineHeight={[1, 1]}
+    letterSpacing={-1}
+    fontFamily="sans"
     as="h1"
-    fontWeight="normal"
-    width={["80%", "78%", "73%"]}
+    fontWeight={700}
+    color="white"
+    textAlign="left"
+    mt={1}
+    mx={1}
   />
 );
 
