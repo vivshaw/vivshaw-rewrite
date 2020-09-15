@@ -1,44 +1,39 @@
 import React from "react";
 import { Flex, Text } from "rebass";
-
-import HeaderBrand from "./HeaderBrand";
-import Nav from "./Nav";
 import Link from "../Link";
 
 const NavLink = props => (
   <Link to={props.to}>
-    <Text {...props} fontFamily="sans" />
+    <Text fontWeight={400} {...props} fontFamily="sans" />
   </Link>
 );
 
 const Header = props => (
   <Flex
     {...props}
-    css={`
-      position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-      z-index: 99;
-    `}
-    flexDirection="row"
-    justifyContent="space-between"
-    pt={"4vw"}
-    mb={"4vw"}
-    px={"4vw"}
+    pt={2}
     as="header"
     color="text"
     backgroundColor="bg"
-    alignItems="center"
+    alignItems="flex-start"
+    justifyContent="space-between"
+    css={`
+      padding-left: 6vw;
+      padding-right: 6vw;
+
+      @media (min-width: 600px) {
+        width: 80vw;
+        padding-left: 5vw;
+        padding-right: 5vw;
+        margin-left: 8vw;
+      }
+
+      position: fixed;
+      top: 0;
+      background-color: transparent;
+    `}
   >
-    <Link to="/">
-      <HeaderBrand>Hannah Shaw</HeaderBrand>
-    </Link>
-    <Nav>
-      <NavLink to="/blog/">Blog</NavLink>
-      <NavLink to="/work/">Work</NavLink>
-      <NavLink to="/">About</NavLink>
-    </Nav>
+    <NavLink to="/work/">Work</NavLink>
   </Flex>
 );
 

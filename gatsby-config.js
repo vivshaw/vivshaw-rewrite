@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `vivshaw.net`,
-    description: `Hannah Vivian Shaw's blog`,
+    description: `Hannah Vivian Shaw's portfolio`,
     author: `Hannah Vivian Shaw`,
     siteUrl: `https://vivshaw.net`,
   },
@@ -22,12 +22,21 @@ module.exports = {
         path: `${__dirname}/content/`,
       },
     },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        custom: {
+          families: ["Recoleta"],
+          urls: ["/fonts/fonts.css"],
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `vivshaw.codes`,
+        name: `vivshaw.net`,
         short_name: `vivshaw`,
         start_url: `/`,
         background_color: `#ec008c`,
