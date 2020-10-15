@@ -1,11 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
-import "../styles/main.scss";
+import "../css/main.scss";
+import BackgroundImage from "../_includes/background-image";
 
 export default () => {
   return (
     <>
-      {/* include background-image.html */}
+      <BackgroundImage />
+
       <div className="page-lead">
         <div className="page-lead-content">
           <h1>Hannah Vivian Shaw</h1>
