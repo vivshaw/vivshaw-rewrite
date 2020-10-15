@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import styled, { ThemeProvider } from "styled-components";
 
 import BaseStyles from "../styles/BaseStyles";
-import Header from "../components/Header";
 import Logo from "../components/Logo";
 import SEO from "../components/seo";
 
@@ -26,8 +25,6 @@ const Layout = ({ children }) => (
     <Page>
       <BaseStyles />
       <SEO title="Hi!" />
-
-      <Header />
 
       <Main>
         <Logo />

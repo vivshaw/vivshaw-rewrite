@@ -88,6 +88,7 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-eslint`,
     `gatsby-plugin-webpack-size`,
+    `gatsby-plugin-sass`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-netlify-cms`,
     {

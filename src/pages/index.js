@@ -1,97 +1,44 @@
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "styled-components";
-import { Text, Box, Flex } from "rebass";
-import { SocialIcon } from "react-social-icons";
+import "../styles/main.scss";
 
-import Section from "../components/Section";
-import Link from "../components/Link";
-
-const BlogTitleLink = styled(Link)`
-  &:hover {
-    color: black;
-  }
-`;
-
-export default ({ data }) => {
+export default () => {
   return (
     <>
-      <Section mt={5} maxWidth="500px">
-        <Text
-          fontFamily="serif"
-          fontSize={"18px"}
-          lineHeight={"20px"}
-          fontWeight={600}
-          mb={1}
-        >
-          Hannah Vivian Shaw
-        </Text>
+      {/* include background-image.html */}
+      <div className="page-lead">
+        <div className="page-lead-content">
+          <h1>Hannah Vivian Shaw</h1>
+          <h2>
+            <a href="{{ site.url }}/about/" className="lead-link">
+              <em>I{"'"}m a Vermont developer</em>
+            </a>{" "}
+            working mainly in Javascript &amp; Python. I{"'"}m into the
+            React/Redux ecosystem, functional programming, and machine learning.
+          </h2>
+          <a href="{{ site.url }}/work/" className="btn-inverse">
+            See my work
+          </a>{" "}
+          &nbsp; or &nbsp;{" "}
+          <a href="https://github.com/vivshaw/" className="btn-inverse">
+            Find me on GitHub
+          </a>
+        </div>
+      </div>
 
-        <Text fontFamily="serif" fontSize={"18px"} fontWeight={400} mb={4}>
-          Front-End Engineer
-        </Text>
+      <div id="page-wrapper">
+        {/* include browser-upgrade.html */}
 
-        <Flex mb={4}>
-          <SocialIcon
-            url="https://github.com/vivshaw"
-            style={{ height: 25, width: 25, marginRight: 10 }}
-          />
-          <SocialIcon
-            url="https://twitter.com/vvvivshaw"
-            style={{ height: 25, width: 25, marginRight: 10 }}
-          />
-          <SocialIcon
-            url="https://www.linkedin.com/in/hvivianshaw/"
-            style={{ height: 25, width: 25, marginRight: 10 }}
-          />
-        </Flex>
+        <div id="main" role="main">
+          <div className="wrap">
+            <div className="archive-wrap">
+              <div className="page-content home-content">{/*{ content }*/}</div>
+            </div>
+          </div>
+        </div>
 
-        <Text
-          fontFamily="serif"
-          fontSize={"18px"}
-          lineHeight={"27px"}
-          color="grey.5"
-          mb={5}
-        >
-          Hi, it{"'"}s me. I enjoy building forward-thinking applications for
-          the mobile web. Check out my blog below.
-        </Text>
-
-        <Text
-          fontFamily="sans"
-          fontSize={1}
-          fontWeight={500}
-          color="grey.5"
-          mb={4}
-        >
-          ARTICLES
-        </Text>
-
-        <Box>
-          {data.blogPosts.edges.map(({ node }) => (
-            <Flex mb={2} key={node.id} justifyContent="space-between">
-              <Box width="340px">
-                <BlogTitleLink to={node.fields.slug}>
-                  <Text
-                    fontFamily="serif"
-                    as="h3"
-                    fontWeight={400}
-                    color="black"
-                    fontSize={3}
-                    mb={1}
-                  >
-                    {node.frontmatter.title}
-                  </Text>
-                </BlogTitleLink>
-              </Box>
-
-              <Text as="aside" fontFamily="mono" fontSize={1} fontWeight={400}>
-                <time>{node.frontmatter.date}</time>
-              </Text>
-            </Flex>
-          ))}
-        </Box>
-      </Section>
+        {/* include footer.html */}
+      </div>
     </>
   );
 };
