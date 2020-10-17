@@ -4,6 +4,7 @@ module.exports = {
     description: `Hannah Vivian Shaw's portfolio`,
     author: `Hannah Vivian Shaw`,
     siteUrl: `https://vivshaw.net`,
+    year: 2017,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,6 +21,13 @@ module.exports = {
       options: {
         name: `content`,
         path: `${__dirname}/content/`,
+      },
+    },
+    `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/_data/`,
       },
     },
     {
@@ -123,6 +131,14 @@ module.exports = {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: `https://vivshaw.net`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          default: require.resolve("./src/util/LayoutFromFrontMatter.js"),
+        },
       },
     },
     {

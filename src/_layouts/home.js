@@ -1,9 +1,9 @@
 import React from "react";
-import { graphql } from "gatsby";
-import "../css/main.scss";
 import BackgroundImage from "../_includes/background-image";
+import BrowserUpgrade from "../_includes/browser-upgrade";
+import Footer from "../_includes/footer";
 
-export default () => {
+const Home = ({ children }) => {
   return (
     <>
       <BackgroundImage />
@@ -29,44 +29,20 @@ export default () => {
       </div>
 
       <div id="page-wrapper">
-        {/* include browser-upgrade.html */}
+        <BrowserUpgrade />
 
         <div id="main" role="main">
           <div className="wrap">
             <div className="archive-wrap">
-              <div className="page-content home-content">{/*{ content }*/}</div>
+              <div className="page-content home-content">{children}</div>
             </div>
           </div>
         </div>
 
-        {/* include footer.html */}
+        <Footer home />
       </div>
     </>
   );
 };
 
-export const query = graphql`
-  query {
-    blogPosts: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/blog/" } }
-      sort: { order: DESC, fields: [frontmatter___date] }
-    ) {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "DD MMMM, YYYY")
-            blurb
-          }
-          excerpt
-          timeToRead
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }
-`;
+export default Home;

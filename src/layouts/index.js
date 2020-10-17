@@ -1,22 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 
-import BaseStyles from "../styles/BaseStyles";
+import GoogleFonts from "../styles/GoogleFonts";
 import SEO from "../components/seo";
 
 import theme from "../styles/theme";
-
-const Page = styled.div``;
+import "../css/main.scss";
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <Page>
-      <BaseStyles />
+    <>
+      <GoogleFonts />
       <SEO title="Hi!" />
 
       {children}
-    </Page>
+    </>
   </ThemeProvider>
 );
 
