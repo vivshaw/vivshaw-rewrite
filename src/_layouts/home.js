@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "gatsby";
+
 import BackgroundImage from "../_includes/background-image";
 import BrowserUpgrade from "../_includes/browser-upgrade";
 import Footer from "../_includes/footer";
@@ -12,15 +14,15 @@ const Home = ({ children }) => {
         <div className="page-lead-content">
           <h1>Hannah Vivian Shaw</h1>
           <h2>
-            <a href="{{ site.url }}/about/" className="lead-link">
+            <Link to="/about/" className="lead-link">
               <em>I{"'"}m a Vermont developer</em>
-            </a>{" "}
+            </Link>{" "}
             working mainly in Javascript &amp; Python. I{"'"}m into the
             React/Redux ecosystem, functional programming, and machine learning.
           </h2>
-          <a href="{{ site.url }}/work/" className="btn-inverse">
+          <Link to="/work/" className="btn-inverse">
             See my work
-          </a>{" "}
+          </Link>{" "}
           &nbsp; or &nbsp;{" "}
           <a href="https://github.com/vivshaw/" className="btn-inverse">
             Find me on GitHub
