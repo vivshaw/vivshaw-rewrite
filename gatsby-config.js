@@ -97,28 +97,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-humans-txt`,
-      options: {
-        header: "vivshaw.net",
-        team: [
-          {
-            Developer: `Hannah Vivian Shaw`,
-            GitHub: `vivshaw`,
-            Twitter: `@vvvivshaw`,
-            Location: `Burlington, VT`,
-          },
-        ],
-        thanks: [`Whoever invented coffee. You're pretty swell.`],
-        site: {
-          "Last update": `2019/7/30`,
-          Standards: `HTML5, CSS, JavaScript, JSX`,
-          Components: `Gatsby, React, styled-components, serverless, AWS`,
-          Softwares: `Visual Studio Code`,
-        },
-        note: `Built with love on the JAMStack.`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: `https://vivshaw.net`,
@@ -182,10 +160,6 @@ module.exports = {
             `,
             output: "/rss.xml",
             title: "vivshaw.net RSS Feed",
-            // optional configuration to insert feed reference in pages:
-            // if `string` is used, it will be used to create RegExp and then test if pathname of
-            // current page satisfied this regular expression;
-            // if not provided or `undefined`, all pages will have feed reference inserted
             match: "^/blog/",
           },
         ],

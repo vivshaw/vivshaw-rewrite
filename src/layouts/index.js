@@ -6,7 +6,6 @@ import GoogleFonts from "../styles/GoogleFonts";
 import SEO from "../components/seo";
 
 import theme from "../styles/theme";
-import "../css/main.scss";
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>

@@ -13,7 +13,6 @@
     "gatsby-image": "^2.2.7",
     "gatsby-plugin-canonical-urls": "^2.1.2",
     "gatsby-plugin-feed": "^2.3.5",
-    "gatsby-plugin-humans-txt": "^1.1.3",
     "gatsby-plugin-layout": "^1.1.2",
     "gatsby-plugin-manifest": "^2.2.4",
     "gatsby-plugin-mdx": "^1.2.46",
