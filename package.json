@@ -46,7 +46,6 @@
     "react-masonry-css": "^1.0.12",
     "rebass": "^3.1.2",
     "styled-components": "^4.2.0",
-    "styled-sanitize": "^1.1.2",
     "styled-system": "^5.0.16"
   },
   "devDependencies": {
@@ -66,10 +65,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.14.3",
     "gatsby-plugin-eslint": "^2.0.4",
-    "prettier": "^1.16.4",
-    "react-social-icons": "^4.1.0",
-    "serverless": "^1.48.4",
-    "serverless-finch": "^2.4.2"
+    "prettier": "^1.16.4"
   },
   "keywords": [
     "gatsby",
@@ -81,14 +77,11 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "deploy": "npm run-script build && serverless client deploy --no-confirm",
-    "undeploy": "serverless client remove"
   },
   "repository": {
     "type": "git",
