@@ -30,15 +30,6 @@ module.exports = {
         path: `./src/_data/`,
       },
     },
-    {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        custom: {
-          families: ["Recoleta"],
-          urls: ["/fonts/fonts.css"],
-        },
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
