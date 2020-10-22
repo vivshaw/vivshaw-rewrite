@@ -1,8 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 
-//FIXME: use proper Graphql
-
+//FIXME: ensure all is implmented and home prop is used
 const Footer = ({ home = false }) => {
   const data = useStaticQuery(graphql`
     query FooterQuery {
