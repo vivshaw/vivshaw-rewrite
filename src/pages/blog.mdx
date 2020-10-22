@@ -11,4 +11,48 @@ image:
   teaser: aaa
 ---
 
-<div class="tiles">bbbbbbb</div>
+import { graphql } from "gatsby";
+import PostGrid from "../_includes/post-grid";
+
+<div class="tiles">
+  {props.data.blogPosts.edges.map(({ node }) => (
+    <PostGrid
+      slug={node.fields.slug}
+      frontmatter={node.frontmatter}
+      excerpt={node.excerpt}
+    />
+  ))}
+</div>
+
+export const pageQuery = graphql`
+  query {
+    blogPosts: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: "DD MMMM, YYYY")
+            blurb
+            image {
+              childImageSharp {
+                fluid(maxWidth: 400, maxHeight: 250) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+          excerpt
+          timeToRead
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`;
