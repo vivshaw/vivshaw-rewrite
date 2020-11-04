@@ -7,7 +7,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   fmImagesToRelative(node);
 
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: "data" });
+    const path = createFilePath({ node, getNode });
+
+    /* Removes date from slug.
+    /* FIXME: do this a cleaner way */
+    const slug = path.substring(0, 6) + path.substring(17);
 
     createNodeField({
       node,
