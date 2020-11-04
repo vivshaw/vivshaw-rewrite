@@ -52,6 +52,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/pages`,
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
@@ -108,6 +115,15 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve("./src/util/LayoutFromFrontMatter.js"),
         },
+        plugins: [`gatsby-remark-images`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
       },
     },
     {

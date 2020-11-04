@@ -1,5 +1,6 @@
 import React from "react";
 import Archive from "../_layouts/archive";
+import Article from "../_layouts/article";
 import Home from "../_layouts/home";
 
 /*
@@ -15,6 +16,10 @@ const LayoutFromFrontMatter = ({ pageContext, children }) => {
 
   if (pageContext.frontmatter.layout === "archive") {
     Layout = Archive;
+  }
+
+  if (pageContext.frontmatter.layout === "article") {
+    Layout = Article;
   }
 
   return <Layout pageContext={pageContext}>{children}</Layout>;
